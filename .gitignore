@@ -1,0 +1,42 @@
+# secrets — keep any .env.example
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# node / vite
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# keys and credentials
+*.pem
+*.key
+credentials.json
+
+# local audio / uploads
+*.webm
+*.wav
+*.mp3
+*.m4a
+*.ogg
+uploads/
+
+# os / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
