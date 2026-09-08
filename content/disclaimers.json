@@ -1,0 +1,14 @@
+{
+  "en": {
+    "short": "This is information, not a lawyer. For a real case, speak to a lawyer or Legal Aid.",
+    "when_to_see_lawyer": "See a lawyer or Legal Aid Council of Nigeria if you are in custody, charged with an offence, or unsure what to sign."
+  },
+  "yo": {
+    "short": "Èyí jẹ́ àlàyé, kì í ṣe agbẹjọ́rò. Fún ẹjọ́ gidi, sọ̀rọ̀ pẹ̀lú agbẹjọ́rò tàbí Legal Aid.",
+    "when_to_see_lawyer": "Lọ sọ́dọ̀ agbẹjọ́rò tàbí Legal Aid Council of Nigeria tí wọ́n bá ti fi ọ́ sẹ́wọ̀n, tí wọ́n fi ẹ̀sùn kàn ọ́, tàbí tí o ò dá ọ lójú ohun tí o fẹ́ fọwọ́ sí."
+  },
+  "ha": {
+    "short": "Wannan bayani ne, ba lauya ba. Idan kana da shari'a ta gaske, tuntuɓi lauya ko Legal Aid.",
+    "when_to_see_lawyer": "Je wurin lauya ko Legal Aid Council of Nigeria idan kana tsare, an tuhume ka, ko ba ka da tabbacin abin da za ka sanya hannu."
+  }
+}

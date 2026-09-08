@@ -1,0 +1,38 @@
+{
+  "first_appearance": {
+    "id": "first_appearance",
+    "en": {
+      "title": "First appearance after arrest",
+      "summary": "This is often your first time before a magistrate. The court should tell you the charge, ask if you understand, and may hear bail.",
+      "steps": [
+        "You are brought to court, usually from the police station or a cell.",
+        "The charge is read. You should hear what they say you did, in a language you understand.",
+        "You are not required to tell your full story today. You can stay silent or say you want a lawyer.",
+        "The magistrate may consider bail, remand, or another date.",
+        "Ask for an interpreter if English is hard. Ask for Legal Aid if you cannot pay a lawyer."
+      ]
+    },
+    "yo": {
+      "title": "Ìfarahàn àkọ́kọ́ lẹ́yìn mímú",
+      "summary": "Èyí sábà máa ń jẹ́ ìgbà àkọ́kọ́ tí o wà níwájú magistrate. Ilé-ẹjọ́ yẹ kó sọ ẹ̀sùn náà, kó béèrè bóyá o ye ọ́, kí wọ́n sì lè gbé ọ̀rọ̀ bail wò.",
+      "steps": [
+        "Wọ́n máa gbé ọ wá sílé-ẹjọ́, lẹ́yìn tí o wà lọ́wọ́ ọlọ́pàá tàbí nínú ẹ̀wọ̀n.",
+        "Wọ́n máa ka ẹ̀sùn. O yẹ kó gbọ́ ohun tí wọ́n sọ pé o ṣe, ní èdè tí o yé ọ.",
+        "Kò pọndandan kó ṣàlàyé gbogbo ìtàn lónìí. O lè dákẹ́, tàbí kó sọ pé o fẹ́ agbẹjọ́rò.",
+        "Magistrate lè gbé ọ̀rọ̀ bail wò, kó fi ọ́ pamọ́, tàbí kó fún ọ ní ọjọ́ mìíràn.",
+        "Béèrè interpreter tí Gẹ̀ẹ́sì bá ṣòro. Béèrè Legal Aid tí o ò bá lówó fún agbẹjọ́rò."
+      ]
+    },
+    "ha": {
+      "title": "Bayyanar farko bayan kama",
+      "summary": "Sau da yawa wannan shine karon farko da kake gaban alkali. Kotu ya kamata ta gaya maka tuhuma, ta tambaye ka ko ka gane, kuma tana iya jin batun beli.",
+      "steps": [
+        "Za a kawo ka kotu, galibi daga ofishin 'yan sanda ko gidan yari.",
+        "Za a karanta tuhumar. Ya kamata ka ji abin da suke cewa ka yi, a yaren da ka ke fahimta.",
+        "Ba lallai ba ne ka ba da cikakken labari yau. Za ka iya yin shiru, ko ka ce kana son lauya.",
+        "Alkali na iya yin la'akari da beli, tsarewa, ko wata rana.",
+        "Nemi mai fassara idan Turanci ya yi wuya. Nemi Legal Aid idan ba ka da kuɗin lauya."
+      ]
+    }
+  }
+}

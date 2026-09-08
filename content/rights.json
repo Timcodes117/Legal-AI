@@ -1,0 +1,191 @@
+{
+  "scenario": "first_appearance",
+  "rights": [
+    {
+      "id": "informed_of_charges",
+      "stages": ["arrest", "first_appearance"],
+      "en": {
+        "title": "Right to be told the charge",
+        "plain": "You should be told, in a language you understand, what they say you did.",
+        "in_practice": "If the charge is rushed or in English you do not follow, say you do not understand and ask them to explain.",
+        "say": [
+          "Please tell me the charge in a language I understand.",
+          "I do not understand this charge. Can it be explained again?"
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ láti gbọ́ ẹ̀sùn",
+        "plain": "Wọ́n yẹ kó sọ fún ọ, ní èdè tí o yé ọ, ohun tí wọ́n sọ pé o ṣe.",
+        "in_practice": "Tí wọ́n bá yára ka ẹ̀sùn, tàbí tí Gẹ̀ẹ́sì ò yé ọ, sọ pé kò yé ọ. Béèrè kí wọ́n ṣàlàyé.",
+        "say": [
+          "Ẹ jọ̀wọ́, ẹ sọ ẹ̀sùn náà ní èdè tí mo yé.",
+          "Ẹ̀sùn yìí ò yé mi. Ṣé ẹ lè tún ṣàlàyé?"
+        ]
+      },
+      "ha": {
+        "title": "Hakkìn a gaya maka tuhuma",
+        "plain": "Ya kamata a gaya maka, a yaren da kake fahimta, abin da suke cewa ka yi.",
+        "in_practice": "Idan an yi gaggawa da tuhuma, ko Turanci bai yi maka sauƙi ba, ka ce ba ka gane ba, ka nemi bayani.",
+        "say": [
+          "Don Allah a gaya mini tuhumar a yaren da nake fahimta.",
+          "Ban gane wannan tuhuma ba. Za a iya sake bayani?"
+        ]
+      }
+    },
+    {
+      "id": "counsel",
+      "stages": ["arrest", "first_appearance", "trial"],
+      "en": {
+        "title": "Right to a lawyer",
+        "plain": "You can ask for your own lawyer, or Legal Aid if you cannot pay.",
+        "in_practice": "You do not have to answer questions about the case before you speak to a lawyer.",
+        "say": [
+          "I want a lawyer before I say anything about this case.",
+          "I cannot pay a lawyer. I want Legal Aid."
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ sí agbẹjọ́rò",
+        "plain": "O lè béèrè agbẹjọ́rò tìrẹ, tàbí Legal Aid tí o ò bá lówó.",
+        "in_practice": "Kò pọndandan kó dáhùn ìbéèrè nípa ẹjọ́ kí o tó bá agbẹjọ́rò sọ̀rọ̀.",
+        "say": [
+          "Mo fẹ́ agbẹjọ́rò kí n tó sọ̀rọ̀ nípa ẹjọ́ yìí.",
+          "Mi ò lówó fún agbẹjọ́rò. Mo fẹ́ Legal Aid."
+        ]
+      },
+      "ha": {
+        "title": "Hakkìn samun lauya",
+        "plain": "Za ka iya neman lauyan ka, ko Legal Aid idan ba ka da kuɗi.",
+        "in_practice": "Ba lallai ba ne ka amsa tambayoyi game da shari'ar kafin ka yi magana da lauya.",
+        "say": [
+          "Ina son lauya kafin in faɗi komai game da wannan shari'a.",
+          "Ba ni da kuɗin lauya. Ina son Legal Aid."
+        ]
+      }
+    },
+    {
+      "id": "silence",
+      "stages": ["arrest", "first_appearance", "trial"],
+      "en": {
+        "title": "Right to remain silent",
+        "plain": "You do not have to explain the whole story or admit anything today.",
+        "in_practice": "Staying quiet is not the same as pleading guilty. You can say you will speak through a lawyer.",
+        "say": [
+          "I will remain silent. I want to speak through my lawyer.",
+          "I do not want to make a statement now."
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ láti dákẹ́",
+        "plain": "Kò pọndandan kó ṣàlàyé gbogbo ìtàn tàbí kó jẹ́wọ́ nǹkan lónìí.",
+        "in_practice": "Dídákẹ́ kì í ṣe ìjẹ́wọ́ ẹ̀bi. O lè sọ pé o máa sọ̀rọ̀ nípasẹ̀ agbẹjọ́rò.",
+        "say": [
+          "Màá dákẹ́. Mo fẹ́ sọ̀rọ̀ nípasẹ̀ agbẹjọ́rò mi.",
+          "Mi ò fẹ́ ṣe àlàyé nísinsìnyí."
+        ]
+      },
+      "ha": {
+        "title": "Hakkìn yin shiru",
+        "plain": "Ba lallai ba ne ka ba da cikakken labari ko ka yarda da wani abu yau.",
+        "in_practice": "Yin shiru ba wai ka amsa laifi ba ne. Za ka iya cewa za ka yi magana ta hannun lauya.",
+        "say": [
+          "Zan yi shiru. Ina so in yi magana ta hannun lauyana.",
+          "Ba na so in yi bayani yanzu."
+        ]
+      }
+    },
+    {
+      "id": "interpreter",
+      "stages": ["arrest", "first_appearance", "trial"],
+      "en": {
+        "title": "Right to an interpreter",
+        "plain": "If court English is hard, you can ask for an interpreter in Yoruba, Hausa, Pidgin, or another language you use.",
+        "in_practice": "Do not guess. If a word is unclear, stop and ask for it in your language.",
+        "say": [
+          "I need an interpreter. I understand Yoruba / Hausa / Pidgin better.",
+          "Please wait. I did not understand that last part."
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ sí interpreter",
+        "plain": "Tí Gẹ̀ẹ́sì ilé-ẹjọ́ bá ṣòro, o lè béèrè interpreter ní Yorùbá, Hausa, Pidgin, tàbí èdè mìíràn.",
+        "in_practice": "Má ṣe fa káàkiri. Tí ọ̀rọ̀ kan ò bá yé ọ, dúró, béèrè ní èdè rẹ.",
+        "say": [
+          "Mo nílò interpreter. Yorùbá / Hausa / Pidgin yé mi sí i.",
+          "Ẹ jọ̀wọ́ ẹ dúró. Ìyẹn ò yé mi."
+        ]
+      },
+      "ha": {
+        "title": "Hakkìn samun mai fassara",
+        "plain": "Idan Turancin kotu ya yi wuya, za ka iya neman mai fassara a Hausa, Yoruba, Pidgin, ko wani yare.",
+        "in_practice": "Kar ka yi zato. Idan kalma ba ta bayyana ba, tsaya ka nemi a yaren ka.",
+        "say": [
+          "Ina bukatar mai fassara. Hausa / Yoruba / Pidgin ya fi min sauƙi.",
+          "Don Allah a jira. Ban gane ɓangaren ƙarshe ba."
+        ]
+      }
+    },
+    {
+      "id": "bail",
+      "stages": ["first_appearance"],
+      "en": {
+        "title": "Right to bail consideration",
+        "plain": "The court can consider whether you should go home on bail instead of staying in custody.",
+        "in_practice": "Bail is not automatic. Ask the magistrate to consider bail, and say if you have a surety or an address.",
+        "say": [
+          "I ask the court to consider bail.",
+          "I have an address / someone who can stand as surety."
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ sí ìgbéwò bail",
+        "plain": "Ilé-ẹjọ́ lè wo bóyá o lè padà sílé lórí bail dípò kí o wà nínú ẹ̀wọ̀n.",
+        "in_practice": "Bail kì í ṣe dandan. Béèrè kí magistrate gbé ọ̀rọ̀ bail wò. Sọ bóyá o ní surety tàbí àdírẹ́sì.",
+        "say": [
+          "Mo ń béèrè pé kí ilé-ẹjọ́ gbé ọ̀rọ̀ bail wò.",
+          "Mo ní àdírẹ́sì / ẹnìkan tí ó lè ṣe surety."
+        ]
+      },
+      "ha": {
+        "title": "Hakkìn a yi la'akari da beli",
+        "plain": "Kotu na iya duba ko za ka koma gida a kan beli maimakon ka zauna a tsare.",
+        "in_practice": "Beli ba sai an ba ka ba. Nemi alkali ya yi la'akari da beli, kuma ka faɗi idan kana da surety ko adireshin gida.",
+        "say": [
+          "Ina roƙon kotu ta yi la'akari da beli.",
+          "Ina da adireshi / wanda zai iya zama surety."
+        ]
+      }
+    },
+    {
+      "id": "no_rush_to_plead",
+      "stages": ["first_appearance"],
+      "en": {
+        "title": "You do not have to rush a plea",
+        "plain": "A plea is when you say guilty or not guilty. You can ask for time or a lawyer before you plead.",
+        "in_practice": "If you feel pressured to say guilty so you can go home, pause and ask for Legal Aid.",
+        "say": [
+          "I do not want to plead today. I want a lawyer first.",
+          "Please give me time to understand the charge."
+        ]
+      },
+      "yo": {
+        "title": "O ò ní láti yára jẹ́wọ́",
+        "plain": "Plea ni nígbà tí o sọ guilty tàbí not guilty. O lè béèrè àkókò tàbí agbẹjọ́rò kí o tó jẹ́wọ́.",
+        "in_practice": "Tí wọ́n bá ń fipá mú ọ láti sọ guilty kí o lè lọ sílé, dúró. Béèrè Legal Aid.",
+        "say": [
+          "Mi ò fẹ́ jẹ́wọ́ lónìí. Mo fẹ́ agbẹjọ́rò náà kọ́.",
+          "Ẹ jọ̀wọ́, ẹ fún mi ní àkókò kí ẹ̀sùn náà lè yé mi."
+        ]
+      },
+      "ha": {
+        "title": "Ba lallai ba ne ka yi gaggawa da amsa",
+        "plain": "Plea shine lokacin da ka ce guilty ko not guilty. Za ka iya neman lokaci ko lauya kafin ka amsa.",
+        "in_practice": "Idan ana matsa maka ka ce guilty domin ka koma gida, tsaya ka nemi Legal Aid.",
+        "say": [
+          "Ba na so in yi plea yau. Ina son lauya da farko.",
+          "Don Allah a ba ni lokaci in gane tuhumar."
+        ]
+      }
+    }
+  ]
+}
