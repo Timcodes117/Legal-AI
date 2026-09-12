@@ -1,14 +1,14 @@
 {
   "en": {
-    "short": "This is information, not a lawyer. For a real case, speak to a lawyer or Legal Aid.",
-    "when_to_see_lawyer": "See a lawyer or Legal Aid Council of Nigeria if you are in custody, charged with an offence, or unsure what to sign."
+    "short": "This app is not a lawyer. It provides general information about your rights, not legal advice for your specific case.",
+    "when_to_see_lawyer": "If you're being charged with a serious crime; If you're being held in custody and don't know what to do; If your rights are being violated; If you're being asked to sign documents you don't understand"
   },
   "yo": {
-    "short": "Èyí jẹ́ àlàyé, kì í ṣe agbẹjọ́rò. Fún ẹjọ́ gidi, sọ̀rọ̀ pẹ̀lú agbẹjọ́rò tàbí Legal Aid.",
-    "when_to_see_lawyer": "Lọ sọ́dọ̀ agbẹjọ́rò tàbí Legal Aid Council of Nigeria tí wọ́n bá ti fi ọ́ sẹ́wọ̀n, tí wọ́n fi ẹ̀sùn kàn ọ́, tàbí tí o ò dá ọ lójú ohun tí o fẹ́ fọwọ́ sí."
+    "short": "Àpù yìí kìí ṣe agbẹjọ́rò. Ó ń fúnni ní ìwífún gbogbogbò nípa ẹ̀tọ́ rẹ, kìí ṣe ìmọ̀ràn òfin fún ọ̀ràn pàtó rẹ.",
+    "when_to_see_lawyer": "Tí wọ́n bá fi ẹ̀sùn ọ̀daràn ńlá kan kàn ọ́; Tí wọ́n bá fi ọ́ sí àhámọ́ tí o kò sì mọ ohun tí o lè ṣe; Tí wọ́n bá ń rú ẹ̀tọ́ rẹ; Tí wọ́n bá ń béèrè lọ́wọ́ rẹ láti fọwọ́ sí àwọn ìwé tí o kò lóye"
   },
   "ha": {
-    "short": "Wannan bayani ne, ba lauya ba. Idan kana da shari'a ta gaske, tuntuɓi lauya ko Legal Aid.",
-    "when_to_see_lawyer": "Je wurin lauya ko Legal Aid Council of Nigeria idan kana tsare, an tuhume ka, ko ba ka da tabbacin abin da za ka sanya hannu."
+    "short": "Wannan manhaja ba lauya ba ce. Yana ba da bayanai na gaba ɗaya game da haƙƙinku, ba shawara ta shari'a ba ga takamaiman shari'arku.",
+    "when_to_see_lawyer": "Idan ana tuhumar ku da babban laifi; Idan ana tsare ku kuma ba ku san abin da za ku yi ba; Idan ana take haƙƙinku; Idan ana neman ku sanya hannu kan takardu ba ku fahimta ba"
   }
 }

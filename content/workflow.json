@@ -2,36 +2,39 @@
   "first_appearance": {
     "id": "first_appearance",
     "en": {
-      "title": "First appearance after arrest",
-      "summary": "This is often your first time before a magistrate. The court should tell you the charge, ask if you understand, and may hear bail.",
+      "title": "First Court Appearance (Arraignment)",
+      "summary": "If the case proceeds, the suspect (now usually called the \"defendant\") is brought before a court, where the charge is formally read out and they're asked to enter a plea. This must be done in open court, in a language the defendant understands, and the defendant must be physically present — a lawyer can't be arraigned on their behalf in their absence.",
       "steps": [
-        "You are brought to court, usually from the police station or a cell.",
-        "The charge is read. You should hear what they say you did, in a language you understand.",
-        "You are not required to tell your full story today. You can stay silent or say you want a lawyer.",
-        "The magistrate may consider bail, remand, or another date.",
-        "Ask for an interpreter if English is hard. Ask for Legal Aid if you cannot pay a lawyer."
+        "Who will be there: a magistrate or judge, a prosecutor, court clerk/registrar, your lawyer (if you have one), and members of the public (proceedings are generally required to be public)",
+        "What questions you'll be asked: whether you understand the charge, and how you plead (guilty or not guilty)",
+        "What decisions might be made: whether you're granted bail at this stage, whether the case is adjourned to a later date, whether your plea is accepted as entered",
+        "I don't fully understand this charge — can it be explained again?",
+        "I plead not guilty, and I want to apply for bail.",
+        "I need more time to get a lawyer before I enter a plea."
       ]
     },
     "yo": {
-      "title": "Ìfarahàn àkọ́kọ́ lẹ́yìn mímú",
-      "summary": "Èyí sábà máa ń jẹ́ ìgbà àkọ́kọ́ tí o wà níwájú magistrate. Ilé-ẹjọ́ yẹ kó sọ ẹ̀sùn náà, kó béèrè bóyá o ye ọ́, kí wọ́n sì lè gbé ọ̀rọ̀ bail wò.",
+      "title": "Ìfarahàn Ilé Ẹjọ́ Àkọ́kọ́ (Ìdájọ́)",
+      "summary": "Bí ẹjọ́ náà bá tẹ̀síwájú, a óò mú ẹni tí a fura sí (tí a sábà máa ń pè ní \"ẹni tí a fi ẹ̀sùn kàn\") wá sí ilé ẹjọ́, níbi tí a ti ń ka ẹ̀sùn náà ní gbangba tí a sì ní kí wọ́n fi ẹ̀sùn kan wọ́n. Èyí gbọ́dọ̀ wáyé ní ilé ẹjọ́ gbangba, ní èdè tí ẹni tí a fi ẹ̀sùn kàn lóye, àti pé ẹni tí a fi ẹ̀sùn kàn gbọ́dọ̀ wà níbẹ̀ ní ti ara - a kò gbọdọ̀ fi agbẹjọ́rò kan sílé ẹjọ́ ní ipò wọn nígbà tí wọn kò bá sí níbẹ̀.",
       "steps": [
-        "Wọ́n máa gbé ọ wá sílé-ẹjọ́, lẹ́yìn tí o wà lọ́wọ́ ọlọ́pàá tàbí nínú ẹ̀wọ̀n.",
-        "Wọ́n máa ka ẹ̀sùn. O yẹ kó gbọ́ ohun tí wọ́n sọ pé o ṣe, ní èdè tí o yé ọ.",
-        "Kò pọndandan kó ṣàlàyé gbogbo ìtàn lónìí. O lè dákẹ́, tàbí kó sọ pé o fẹ́ agbẹjọ́rò.",
-        "Magistrate lè gbé ọ̀rọ̀ bail wò, kó fi ọ́ pamọ́, tàbí kó fún ọ ní ọjọ́ mìíràn.",
-        "Béèrè interpreter tí Gẹ̀ẹ́sì bá ṣòro. Béèrè Legal Aid tí o ò bá lówó fún agbẹjọ́rò."
+        "Àwọn wo ló máa wà níbẹ̀: adájọ́ tàbí adájọ́, agbẹjọ́rò, akọ̀wé/olùforúkọsílẹ̀ ilé ẹjọ́, agbẹjọ́rò rẹ (tí o bá ní ọ̀kan), àti àwọn ènìyàn gbogbogbò (ìgbẹ́jọ́ gbọ́dọ̀ jẹ́ ti gbogbo ènìyàn)",
+        "Àwọn ìbéèrè wo ni a ó bi ọ́: bóyá o lóye ẹ̀sùn náà, àti bí o ṣe jẹ́wọ́ (ẹ̀bi tàbí kò jẹ̀bi)",
+        "Àwọn ìpinnu wo ni a lè ṣe: bóyá a fún ọ ní ìdánilójú ní ìpele yìí, bóyá a ti sún ẹjọ́ náà síwájú sí ọjọ́ mìíràn, bóyá a gba ẹ̀bẹ̀ rẹ gẹ́gẹ́ bí a ṣe kọ ọ́.",
+        "Mo Ṣé o kò lóye ẹ̀sùn yìí dáadáa — ṣé a lè tún ṣàlàyé rẹ̀?",
+        "Mo jẹ́wọ́ pé mi ò jẹ̀bi, mo sì fẹ́ béèrè fún ìdánilẹ́kọ̀ọ́.",
+        "Mo nílò àkókò púpọ̀ sí i láti gba agbẹjọ́rò kí n tó fi ẹ̀bẹ̀ sílẹ̀."
       ]
     },
     "ha": {
-      "title": "Bayyanar farko bayan kama",
-      "summary": "Sau da yawa wannan shine karon farko da kake gaban alkali. Kotu ya kamata ta gaya maka tuhuma, ta tambaye ka ko ka gane, kuma tana iya jin batun beli.",
+      "title": "Gabatarwar Kotu ta Farko (Gyara)",
+      "summary": "Idan shari'ar ta ci gaba, ana gabatar da wanda ake zargi (wanda yanzu ake kira \"wanda ake tuhuma\") a gaban kotu, inda ake karanta tuhumar a hukumance kuma ana neman su shigar da ƙara. Dole ne a yi hakan a kotu a buɗe, a cikin harshen da wanda ake tuhuma ya fahimta, kuma dole ne wanda ake tuhuma ya kasance a wurin - ba za a iya gurfanar da lauya a gaban kotu ba idan ba ya nan.",
       "steps": [
-        "Za a kawo ka kotu, galibi daga ofishin 'yan sanda ko gidan yari.",
-        "Za a karanta tuhumar. Ya kamata ka ji abin da suke cewa ka yi, a yaren da ka ke fahimta.",
-        "Ba lallai ba ne ka ba da cikakken labari yau. Za ka iya yin shiru, ko ka ce kana son lauya.",
-        "Alkali na iya yin la'akari da beli, tsarewa, ko wata rana.",
-        "Nemi mai fassara idan Turanci ya yi wuya. Nemi Legal Aid idan ba ka da kuɗin lauya."
+        "Wa zai kasance a wurin: alkali ko alkali, mai gabatar da kara, magatakardar kotu/mai rijista, lauyanku (idan kuna da ɗaya), da kuma jama'a (gabaɗaya ana buƙatar a yi shari'ar a bainar jama'a)",
+        "Waɗanne tambayoyi za a yi muku: ko kun fahimci tuhumar, da kuma yadda kuka amsa (ko ba ku da laifi)",
+        "Waɗanne shawarwari za a iya yankewa: ko an ba ku beli a wannan matakin, ko an ɗage shari'ar zuwa wani lokaci na gaba, ko an karɓi roƙonku kamar yadda aka shigar",
+        "Ni Ban fahimci wannan tuhumar sosai ba — za a iya sake bayyana ta? ",
+        "Na amsa laifina, kuma ina so in nemi beli.",
+        "Ina buƙatar ƙarin lokaci don neman lauya kafin in shigar da ƙara."
       ]
     }
   }

@@ -2,188 +2,317 @@
   "scenario": "first_appearance",
   "rights": [
     {
-      "id": "informed_of_charges",
-      "stages": ["arrest", "first_appearance"],
+      "id": "interpreter",
+      "stages": [
+        "arrest",
+        "first_appearance",
+        "trial"
+      ],
       "en": {
-        "title": "Right to be told the charge",
-        "plain": "You should be told, in a language you understand, what they say you did.",
-        "in_practice": "If the charge is rushed or in English you do not follow, say you do not understand and ask them to explain.",
+        "title": "Right to Interpreter",
+        "plain": "You have the right to understand what is happening to you at the police station and in court. If you don't speak or understand English well, the police or the court are required to provide someone to explain proceedings in a language you understand. Under Nigerian law, a statement you give without understanding the language it was taken in can be thrown out in court.",
+        "in_practice": "Police proceed with questioning without first checking whether the suspect understands English",
         "say": [
-          "Please tell me the charge in a language I understand.",
-          "I do not understand this charge. Can it be explained again?"
+          "I don't understand English well. I need an interpreter.",
+          "Can someone explain this in Yoruba / Hausa / Pidgin?",
+          "I didn't understand what the judge/officer just said. Please explain it again.",
+          "I don't want to sign this statement until it's read back to me in a language I understand."
         ]
       },
       "yo": {
-        "title": "Ẹ̀tọ́ láti gbọ́ ẹ̀sùn",
-        "plain": "Wọ́n yẹ kó sọ fún ọ, ní èdè tí o yé ọ, ohun tí wọ́n sọ pé o ṣe.",
-        "in_practice": "Tí wọ́n bá yára ka ẹ̀sùn, tàbí tí Gẹ̀ẹ́sì ò yé ọ, sọ pé kò yé ọ. Béèrè kí wọ́n ṣàlàyé.",
+        "title": "Ẹ̀tọ́ sí Olùtumọ̀",
+        "plain": "O ní ẹ̀tọ́ láti lóye ohun tí ń ṣẹlẹ̀ sí ọ ní àgọ́ ọlọ́pàá àti ní ilé ẹjọ́. Tí o kò bá lè sọ tàbí lóye èdè Gẹ̀ẹ́sì dáadáa, àwọn ọlọ́pàá tàbí ilé ẹjọ́ gbọ́dọ̀ fún ẹnìkan láti ṣàlàyé àwọn ìgbésẹ̀ ní èdè tí o gbọ́. Lábẹ́ òfin Nàìjíríà, gbólóhùn tí o bá sọ láìlóye èdè tí a gbà á lè jáde nílé ẹjọ́.",
+        "in_practice": "Àwọn ọlọ́pàá tẹ̀síwájú pẹ̀lú ìbéèrè láì kọ́kọ́ ṣàyẹ̀wò bóyá ẹni tí wọ́n fura sí náà lóye èdè Gẹ̀ẹ́sì",
         "say": [
-          "Ẹ jọ̀wọ́, ẹ sọ ẹ̀sùn náà ní èdè tí mo yé.",
-          "Ẹ̀sùn yìí ò yé mi. Ṣé ẹ lè tún ṣàlàyé?"
+          "Mi ò gbọ́ èdè Gẹ̀ẹ́sì dáadáa. Mo nílò olùtumọ̀.",
+          "Ṣé ẹnìkan lè ṣàlàyé èyí ní èdè Yorùbá / Hausa / Pidgin?",
+          "Mi ò lóye ohun tí adájọ́/ọ̀gá sọ. Jọ̀wọ́ ṣàlàyé rẹ̀ lẹ́ẹ̀kan sí i.",
+          "Mi ò fẹ́ fọwọ́ sí gbólóhùn yìí títí tí wọ́n á fi kà á padà sí mi ní èdè tí mo gbọ́."
         ]
       },
       "ha": {
-        "title": "Hakkìn a gaya maka tuhuma",
-        "plain": "Ya kamata a gaya maka, a yaren da kake fahimta, abin da suke cewa ka yi.",
-        "in_practice": "Idan an yi gaggawa da tuhuma, ko Turanci bai yi maka sauƙi ba, ka ce ba ka gane ba, ka nemi bayani.",
+        "title": "Hakkin Mai Fassara",
+        "plain": "Kana da 'yancin fahimtar abin da ke faruwa da kai a ofishin 'yan sanda da kuma kotu. Idan ba ka jin Turanci sosai ko kuma ba ka fahimci Turanci sosai ba, ana buƙatar 'yan sanda ko kotu su samar maka da wani wanda zai yi maka bayani a cikin harshen da ka fahimta. A ƙarƙashin dokar Najeriya, za a iya jefar da wata sanarwa da ka bayar ba tare da fahimtar yaren da aka yi amfani da shi ba a kotu.",
+        "in_practice": "'Yan sanda sun ci gaba da tambayoyi ba tare da sun fara duba ko wanda ake zargi ya fahimci Turanci ba",
         "say": [
-          "Don Allah a gaya mini tuhumar a yaren da nake fahimta.",
-          "Ban gane wannan tuhuma ba. Za a iya sake bayani?"
+          "Ban fahimci Turanci sosai ba. Ina buƙatar mai fassara.",
+          "Shin wani zai iya bayyana wannan a cikin Yarbanci / Hausa / Pidgin?",
+          "Ban fahimci abin da alkali/jami'in ya faɗa ba. Don Allah a sake bayyana shi.",
+          "Ba na son sanya hannu kan wannan bayanin har sai an sake karanta min shi a cikin harshen da na fahimta."
         ]
       }
     },
     {
       "id": "counsel",
-      "stages": ["arrest", "first_appearance", "trial"],
+      "stages": [
+        "arrest",
+        "first_appearance",
+        "trial"
+      ],
       "en": {
-        "title": "Right to a lawyer",
-        "plain": "You can ask for your own lawyer, or Legal Aid if you cannot pay.",
-        "in_practice": "You do not have to answer questions about the case before you speak to a lawyer.",
+        "title": "Right to Lawyer",
+        "plain": "You have the right to speak to a lawyer and to have one present with you — whether or not you can afford one, you're entitled to seek legal counsel, and if you can't afford a lawyer you can request free legal aid from the Legal Aid Council or a legal NGO. Any statement taken from you without a lawyer present (if you asked for one) can be challenged in court.",
+        "in_practice": "Police pressure suspects to \"just talk\" before a lawyer arrives, or discourage them from asking for one",
         "say": [
-          "I want a lawyer before I say anything about this case.",
-          "I cannot pay a lawyer. I want Legal Aid."
+          "I wish to remain silent and I would like to speak to a lawyer.",
+          "I want a lawyer present before I answer any questions.",
+          "I cannot afford a lawyer. I want the Legal Aid Council to be contacted for me.",
+          "I will not sign anything until my lawyer has seen it."
         ]
       },
       "yo": {
-        "title": "Ẹ̀tọ́ sí agbẹjọ́rò",
-        "plain": "O lè béèrè agbẹjọ́rò tìrẹ, tàbí Legal Aid tí o ò bá lówó.",
-        "in_practice": "Kò pọndandan kó dáhùn ìbéèrè nípa ẹjọ́ kí o tó bá agbẹjọ́rò sọ̀rọ̀.",
+        "title": "Ẹ̀tọ́ sí Agbẹjọ́rò",
+        "plain": "O ní ẹ̀tọ́ láti bá agbẹjọ́rò sọ̀rọ̀ àti láti ní ọ̀kan pẹ̀lú rẹ — yálà o lè rà á tàbí bẹ́ẹ̀ kọ́, o ní ẹ̀tọ́ láti wá agbẹjọ́rò, tí o kò bá sì lè rà á, o lè béèrè fún ìrànlọ́wọ́ òfin ọ̀fẹ́ láti ọ̀dọ̀ Ìgbìmọ̀ Ìrànlọ́wọ́ Òfin tàbí NGO kan tí ó ní òfin. Èyíkéyìí gbólóhùn tí a bá gbà láti ọ̀dọ̀ rẹ láìsí agbẹjọ́rò tí ó wà (tí o bá béèrè fún ọ̀kan) ni a lè pè níjà ní ilé ẹjọ́.",
+        "in_practice": "",
         "say": [
-          "Mo fẹ́ agbẹjọ́rò kí n tó sọ̀rọ̀ nípa ẹjọ́ yìí.",
-          "Mi ò lówó fún agbẹjọ́rò. Mo fẹ́ Legal Aid."
+          "Mo fẹ́ dákẹ́, mo sì fẹ́ bá agbẹjọ́rò sọ̀rọ̀.",
+          "Mo fẹ́ kí agbẹjọ́rò wà níbẹ̀ kí n tó dáhùn ìbéèrè èyíkéyìí.",
+          "Mi ò lè san owó fún agbẹjọ́rò. Mo fẹ́ kí wọ́n pe Ìgbìmọ̀ Ìrànlọ́wọ́ Òfin fún mi.",
+          "Mi ò ní fọwọ́ sí ohunkóhun títí agbẹjọ́rò mi yóò fi rí i."
         ]
       },
       "ha": {
-        "title": "Hakkìn samun lauya",
-        "plain": "Za ka iya neman lauyan ka, ko Legal Aid idan ba ka da kuɗi.",
-        "in_practice": "Ba lallai ba ne ka amsa tambayoyi game da shari'ar kafin ka yi magana da lauya.",
+        "title": "Haƙƙin Lauya",
+        "plain": "Kana da 'yancin yin magana da lauya da kuma samun ɗaya a tare da kai - ko za ka iya biyan kuɗi ko a'a, kana da 'yancin neman lauya, kuma idan ba za ka iya biyan kuɗi ba, za ka iya neman taimakon lauya kyauta daga Majalisar Taimakon Shari'a ko wata ƙungiya mai zaman kanta ta shari'a. Duk wani bayani da aka karɓa daga gare ka ba tare da lauyan da ke wurin ba (idan ka nemi ɗaya) za a iya ƙalubalantarsa ​​a kotu.",
+        "in_practice": "'Yan sanda suna matsa wa waɗanda ake zargi da \"yin magana kawai\" kafin lauya ya iso, ko kuma su hana su neman ɗaya",
         "say": [
-          "Ina son lauya kafin in faɗi komai game da wannan shari'a.",
-          "Ba ni da kuɗin lauya. Ina son Legal Aid."
+          "Ina so in yi shiru kuma ina so in yi magana da lauya.",
+          "Ina son lauya ya kasance kafin in amsa kowace tambaya.",
+          "Ba zan iya biyan kuɗin lauya ba. Ina so a tuntuɓi Majalisar Taimakon Shari'a domin in same ta.",
+          "Ba zan sanya hannu kan komai ba har sai lauyana ya gani."
         ]
       }
     },
     {
       "id": "silence",
-      "stages": ["arrest", "first_appearance", "trial"],
+      "stages": [
+        "arrest",
+        "first_appearance",
+        "trial"
+      ],
       "en": {
-        "title": "Right to remain silent",
-        "plain": "You do not have to explain the whole story or admit anything today.",
-        "in_practice": "Staying quiet is not the same as pleading guilty. You can say you will speak through a lawyer.",
+        "title": "Right to Silence",
+        "plain": "You are not required to answer questions from the police or say anything that could incriminate you. You can wait until you've spoken to a lawyer before responding to any question. If you do say something, and it was obtained through pressure, threats, or oppressive treatment, it can be challenged and kept out of your trial entirely.",
+        "in_practice": "Officers keep questioning after a suspect has clearly said they want to stay silent or wants a lawyer",
         "say": [
-          "I will remain silent. I want to speak through my lawyer.",
-          "I do not want to make a statement now."
+          "I wish to remain silent until I've spoken to a lawyer.",
+          "I don't have to answer that.",
+          "I'm willing to give my name and address, but nothing further without my lawyer present.",
+          "If a statement was taken under pressure: \"That statement wasn't given freely — I want it challenged in court."
         ]
       },
       "yo": {
         "title": "Ẹ̀tọ́ láti dákẹ́",
-        "plain": "Kò pọndandan kó ṣàlàyé gbogbo ìtàn tàbí kó jẹ́wọ́ nǹkan lónìí.",
-        "in_practice": "Dídákẹ́ kì í ṣe ìjẹ́wọ́ ẹ̀bi. O lè sọ pé o máa sọ̀rọ̀ nípasẹ̀ agbẹjọ́rò.",
-        "say": [
-          "Màá dákẹ́. Mo fẹ́ sọ̀rọ̀ nípasẹ̀ agbẹjọ́rò mi.",
-          "Mi ò fẹ́ ṣe àlàyé nísinsìnyí."
-        ]
+        "plain": "Kò pọndandan kí o dáhùn àwọn ìbéèrè láti ọ̀dọ̀ ọlọ́pàá tàbí kí o sọ ohunkóhun tí ó lè mú ọ lẹ́bi. O lè dúró títí tí o bá ti bá agbẹjọ́rò sọ̀rọ̀ kí o tó dáhùn sí ìbéèrè èyíkéyìí. Tí o bá sọ nǹkan kan, tí a sì gbà á nípasẹ̀ ìfúngunmọ́, ìhalẹ̀mọ́ni, tàbí ìtọ́jú ìnilára, a lè pè é níjà kí a sì pa á mọ́ kúrò nínú ẹjọ́ rẹ pátápátá.",
+        "in_practice": "Àwọn ọlọ́pàá máa ń béèrè ìbéèrè lẹ́yìn tí ẹni tí wọ́n fura sí bá ti sọ ní kedere pé wọ́n fẹ́ dákẹ́ tàbí pé wọ́n fẹ́ agbẹjọ́rò",
+        "say": []
       },
       "ha": {
-        "title": "Hakkìn yin shiru",
-        "plain": "Ba lallai ba ne ka ba da cikakken labari ko ka yarda da wani abu yau.",
-        "in_practice": "Yin shiru ba wai ka amsa laifi ba ne. Za ka iya cewa za ka yi magana ta hannun lauya.",
+        "title": "Haƙƙin Yin Shiru",
+        "plain": "Ba a buƙatar ka amsa tambayoyi daga 'yan sanda ko ka faɗi wani abu da zai iya ɓata maka rai ba. Za ka iya jira har sai ka yi magana da lauya kafin ka amsa kowace tambaya. Idan ka faɗi wani abu, kuma an same shi ta hanyar matsin lamba, barazana, ko zalunci, za a iya ƙalubalantarsa ​​kuma a hana shi shiga shari'ar ka gaba ɗaya.",
+        "in_practice": "Jami'ai suna ci gaba da yin tambayoyi bayan wanda ake zargi ya bayyana a fili cewa yana son yin shiru ko kuma yana son lauya",
         "say": [
-          "Zan yi shiru. Ina so in yi magana ta hannun lauyana.",
-          "Ba na so in yi bayani yanzu."
-        ]
-      }
-    },
-    {
-      "id": "interpreter",
-      "stages": ["arrest", "first_appearance", "trial"],
-      "en": {
-        "title": "Right to an interpreter",
-        "plain": "If court English is hard, you can ask for an interpreter in Yoruba, Hausa, Pidgin, or another language you use.",
-        "in_practice": "Do not guess. If a word is unclear, stop and ask for it in your language.",
-        "say": [
-          "I need an interpreter. I understand Yoruba / Hausa / Pidgin better.",
-          "Please wait. I did not understand that last part."
-        ]
-      },
-      "yo": {
-        "title": "Ẹ̀tọ́ sí interpreter",
-        "plain": "Tí Gẹ̀ẹ́sì ilé-ẹjọ́ bá ṣòro, o lè béèrè interpreter ní Yorùbá, Hausa, Pidgin, tàbí èdè mìíràn.",
-        "in_practice": "Má ṣe fa káàkiri. Tí ọ̀rọ̀ kan ò bá yé ọ, dúró, béèrè ní èdè rẹ.",
-        "say": [
-          "Mo nílò interpreter. Yorùbá / Hausa / Pidgin yé mi sí i.",
-          "Ẹ jọ̀wọ́ ẹ dúró. Ìyẹn ò yé mi."
-        ]
-      },
-      "ha": {
-        "title": "Hakkìn samun mai fassara",
-        "plain": "Idan Turancin kotu ya yi wuya, za ka iya neman mai fassara a Hausa, Yoruba, Pidgin, ko wani yare.",
-        "in_practice": "Kar ka yi zato. Idan kalma ba ta bayyana ba, tsaya ka nemi a yaren ka.",
-        "say": [
-          "Ina bukatar mai fassara. Hausa / Yoruba / Pidgin ya fi min sauƙi.",
-          "Don Allah a jira. Ban gane ɓangaren ƙarshe ba."
+          "Ina so in yi shiru har sai na yi magana da lauya.",
+          "Ba sai na amsa hakan ba.",
+          "Ina son in ba da sunana da adireshina, amma babu wani abu da ya wuce haka ba tare da lauyana a wurin ba.",
+          "Idan aka ɗauki wata sanarwa a ƙarƙashin matsin lamba: \"Ba a bayar da wannan bayanin cikin 'yanci ba - Ina so a ƙalubalance shi a kotu."
         ]
       }
     },
     {
       "id": "bail",
-      "stages": ["first_appearance"],
+      "stages": [
+        "arrest",
+        "first_appearance"
+      ],
       "en": {
-        "title": "Right to bail consideration",
-        "plain": "The court can consider whether you should go home on bail instead of staying in custody.",
-        "in_practice": "Bail is not automatic. Ask the magistrate to consider bail, and say if you have a surety or an address.",
+        "title": "Right to Bail",
+        "plain": "Being arrested does not mean you must stay in custody until trial. Depending on the offence, you can be released — either by the police (police bail) or by a court (court bail) — often on conditions like a surety, an address, or a bond. Bail conditions are not supposed to be so harsh that they amount to keeping you locked up anyway. Bail is not a punishment and is not supposed to be sold — asking suspects or their families to pay police officers directly for bail is illegal (\"bail is free\").",
+        "in_practice": "Police or court officials demand money directly for \"bail\" (this is illegal — bail itself is free; only bond/surety paperwork may apply)",
         "say": [
-          "I ask the court to consider bail.",
-          "I have an address / someone who can stand as surety."
+          "Am I entitled to bail for this offence? On what conditions?",
+          "This bail condition is impossible for me to meet — can it be reviewed?",
+          "I was told to pay money for bail. I want to know if this is a bribe.",
+          "How long can I legally be held before I'm either charged, granted bail, or brought to court?"
         ]
       },
       "yo": {
-        "title": "Ẹ̀tọ́ sí ìgbéwò bail",
-        "plain": "Ilé-ẹjọ́ lè wo bóyá o lè padà sílé lórí bail dípò kí o wà nínú ẹ̀wọ̀n.",
-        "in_practice": "Bail kì í ṣe dandan. Béèrè kí magistrate gbé ọ̀rọ̀ bail wò. Sọ bóyá o ní surety tàbí àdírẹ́sì.",
+        "title": "Ẹ̀tọ́ sí ìdádúró",
+        "plain": "Wíwà ní ìhámọ́ kò túmọ̀ sí pé o gbọ́dọ̀ wà ní àhámọ́ títí di ìgbà tí a bá ń ṣe ìdájọ́. Gẹ́gẹ́ bí ẹ̀ṣẹ̀ náà, wọ́n lè dá ọ sílẹ̀ — yálà nípasẹ̀ ọlọ́pàá (dádúró ọlọ́pàá) tàbí nípasẹ̀ ilé ẹjọ́ (dádúró ilé ẹjọ́) — nígbà míìrán lórí àwọn ipò bí onígbèsè, àdírẹ́sì, tàbí ìwé ẹ̀rí. Àwọn òfin ìdádúró kò gbọdọ̀ le tó bẹ́ẹ̀ tí wọ́n fi ń pa ọ́ mọ́ ní àhámọ́. Dídúró kìí ṣe ìjìyà, a kò sì gbọ́dọ̀ tà á — bíbéèrè lọ́wọ́ àwọn afurasi tàbí ìdílé wọn láti san owó fún àwọn ọlọ́pàá tààrà fún ìdádúró jẹ́ òfin àìtọ́ (\"dádúró jẹ́ ọ̀fẹ́\").",
+        "in_practice": "",
         "say": [
-          "Mo ń béèrè pé kí ilé-ẹjọ́ gbé ọ̀rọ̀ bail wò.",
-          "Mo ní àdírẹ́sì / ẹnìkan tí ó lè ṣe surety."
+          "Ṣé mo ní ẹ̀tọ́ sí ìdúró fún ẹ̀ṣẹ̀ yìí? Lórí àwọn àdéhùn wo?",
+          "Àdéhùn ìdúró yìí kò ṣeé ṣe fún mi láti tẹ̀lé — ṣé a lè ṣàtúnyẹ̀wò rẹ̀?",
+          "Wọ́n sọ fún mi pé kí n san owó ìdúró fún ìdúró. Mo fẹ́ mọ̀ bóyá àbẹ̀tẹ́lẹ̀ ni èyí.",
+          "Ìgbà wo ni wọ́n lè dá mi dúró lábẹ́ òfin kí wọ́n tó fi ẹ̀sùn kàn mí, kí wọ́n fún mi ní ìdúró, tàbí kí wọ́n mú mi wá sílé ẹjọ́?"
         ]
       },
       "ha": {
-        "title": "Hakkìn a yi la'akari da beli",
-        "plain": "Kotu na iya duba ko za ka koma gida a kan beli maimakon ka zauna a tsare.",
-        "in_practice": "Beli ba sai an ba ka ba. Nemi alkali ya yi la'akari da beli, kuma ka faɗi idan kana da surety ko adireshin gida.",
+        "title": "Hakkin Beli",
+        "plain": "Kama ba yana nufin dole ne ka ci gaba da zama a gidan yari har sai an yi shari'a ba. Dangane da laifin, za a iya sake ka - ko dai ta hannun 'yan sanda (belin 'yan sanda) ko ta kotu (belin kotu) - sau da yawa akan sharuɗɗa kamar mai garanti, adireshi, ko jingina. Ba a tsammanin sharuɗɗan belin su yi tsauri sosai har su kai ga tsare ka ko ta yaya. Beli ba hukunci ba ne kuma ba a tsammanin a sayar da shi ba - tambayar waɗanda ake zargi ko iyalansu su biya jami'an 'yan sanda kai tsaye don belin haramun ne (\"belin kyauta ne\").",
+        "in_practice": "'Yan sanda ko jami'an kotu suna neman kuɗi kai tsaye don \"beli\" (wannan haramun ne - beli kansa kyauta ne; takardun jingina/garanti ne kawai za su iya aiki)",
         "say": [
-          "Ina roƙon kotu ta yi la'akari da beli.",
-          "Ina da adireshi / wanda zai iya zama surety."
+          "Shin ina da ikon yin beli don wannan laifin? A kan waɗanne sharuɗɗa?",
+          "Wannan sharaɗin beli ba zai yiwu a gare ni in cika ba - za a iya sake duba shi?",
+          "An gaya mini in biya kuɗi don beli. Ina so in san ko wannan cin hanci ne.",
+          "Har yaushe za a iya tsare ni bisa doka kafin a tuhume ni, a ba ni beli, ko a kawo ni kotu?"
         ]
       }
     },
     {
-      "id": "no_rush_to_plead",
-      "stages": ["first_appearance"],
+      "id": "informed_of_charges",
+      "stages": [
+        "arrest",
+        "first_appearance"
+      ],
       "en": {
-        "title": "You do not have to rush a plea",
-        "plain": "A plea is when you say guilty or not guilty. You can ask for time or a lawyer before you plead.",
-        "in_practice": "If you feel pressured to say guilty so you can go home, pause and ask for Legal Aid.",
+        "title": "Right to Be Informed of Charges",
+        "plain": "If you're arrested, you must be told promptly — and in a language you understand — exactly what you're accused of and why you're being held. This isn't optional or something the police can delay indefinitely; it must happen at or near the point of arrest, not hours or days later.",
+        "in_practice": "People are arrested and held without being told a specific reason (\"come to the station, we'll explain there\")",
         "say": [
-          "I do not want to plead today. I want a lawyer first.",
-          "Please give me time to understand the charge."
+          "What exactly am I being arrested for? Please tell me the specific offence.",
+          "I want this explained in a language I understand before I answer any questions.",
+          "Can I see the charge in writing?"
         ]
       },
       "yo": {
-        "title": "O ò ní láti yára jẹ́wọ́",
-        "plain": "Plea ni nígbà tí o sọ guilty tàbí not guilty. O lè béèrè àkókò tàbí agbẹjọ́rò kí o tó jẹ́wọ́.",
-        "in_practice": "Tí wọ́n bá ń fipá mú ọ láti sọ guilty kí o lè lọ sílé, dúró. Béèrè Legal Aid.",
+        "title": "Ẹ̀tọ́ Láti Gba Ẹ̀sùn Nípa Ẹ̀sùn",
+        "plain": "Tí wọ́n bá mú ọ, wọ́n gbọ́dọ̀ sọ fún ọ ní kíákíá — àti ní èdè tí o lóye — ohun tí wọ́n fi ẹ̀sùn kàn ọ́ àti ìdí tí wọ́n fi mú ọ. Èyí kì í ṣe àṣàyàn tàbí ohun tí àwọn ọlọ́pàá lè dá dúró láìlópin; ó gbọ́dọ̀ ṣẹlẹ̀ ní tàbí nítòsí ibi tí wọ́n ti mú ọ, kì í ṣe ní wákàtí tàbí ọjọ́ lẹ́yìn náà.",
+        "in_practice": "Wọ́n mú àwọn ènìyàn, wọ́n sì mú wọn láìsọ ìdí pàtó kan fún wọn (“ẹ wá sí ibùdó ìdúró, a ó ṣàlàyé níbẹ̀”)",
         "say": [
-          "Mi ò fẹ́ jẹ́wọ́ lónìí. Mo fẹ́ agbẹjọ́rò náà kọ́.",
-          "Ẹ jọ̀wọ́, ẹ fún mi ní àkókò kí ẹ̀sùn náà lè yé mi."
+          "Kí ni wọ́n ń mú mi fún gan-an? Jọ̀wọ́ sọ fún mi nípa ẹ̀ṣẹ̀ pàtó náà.",
+          "Mo fẹ́ kí wọ́n ṣàlàyé èyí ní èdè tí mo lóye kí n tó dáhùn ìbéèrè èyíkéyìí.",
+          "Ṣé mo lè rí ẹ̀sùn náà ní kíkọ?"
         ]
       },
       "ha": {
-        "title": "Ba lallai ba ne ka yi gaggawa da amsa",
-        "plain": "Plea shine lokacin da ka ce guilty ko not guilty. Za ka iya neman lokaci ko lauya kafin ka amsa.",
-        "in_practice": "Idan ana matsa maka ka ce guilty domin ka koma gida, tsaya ka nemi Legal Aid.",
+        "title": "Hakkin Sanar da Laifuka",
+        "plain": "Idan an kama ka, dole ne a gaya maka nan take - kuma a cikin harshen da ka fahimta - ainihin abin da ake zargin ka da shi da kuma dalilin da ya sa ake tsare da kai. Wannan ba zaɓi ba ne ko kuma wani abu da 'yan sanda za su iya jinkirta shi har abada; dole ne ya faru a ko kusa da inda za a kama ka, ba sa'o'i ko kwanaki bayan haka ba.",
+        "in_practice": "Ana kama mutane kuma ana tsare su ba tare da an gaya musu takamaiman dalili ba (\"ku zo ofishin 'yan sanda, za mu yi bayani a can\")",
         "say": [
-          "Ba na so in yi plea yau. Ina son lauya da farko.",
-          "Don Allah a ba ni lokaci in gane tuhumar."
+          "Menene ainihin laifin da ake kama ni? Don Allah a gaya min takamaiman laifin.",
+          "Ina so a yi min bayani a cikin harshen da na fahimta kafin in amsa kowace tambaya.",
+          "Zan iya ganin tuhumar a rubuce?"
+        ]
+      }
+    },
+    {
+      "id": "fair_hearing",
+      "stages": [
+        "first_appearance",
+        "trial"
+      ],
+      "en": {
+        "title": "Right to Fair Hearing",
+        "plain": "Anyone facing a court case — civil or criminal — is entitled to have that case heard within a reasonable time, by a court or tribunal that is genuinely independent and impartial, and to have the proceedings held in public. This is the umbrella right that everything else in a trial (interpreter, lawyer, being informed of the charge) sits under, but it also stands on its own: a trial can be technically \"fair\" in the sense of following procedure and still breach this right if it drags on for years, or if the judge/tribunal has a stake in the outcome.",
+        "in_practice": "Cases stall for years awaiting trial, especially where the accused is in custody, defeating the \"reasonable time\" requirement",
+        "say": [
+          "This case has been delayed for years without progress — that's a breach of my right to a hearing within a reasonable time.",
+          "I don't believe this tribunal can be impartial, given [specific conflict of interest] — I want that raised on record.",
+          "This proceeding should be held in public. Why is it being conducted privately?",
+          "The judgment/decision needs to be delivered in open court, not in chambers."
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ sí Ìgbọ́ràn Títọ́",
+        "plain": "Ẹnikẹ́ni tí ó bá dojúkọ ẹjọ́ ilé ẹjọ́ — ti ara ẹni tàbí ti ọ̀daràn — ní ẹ̀tọ́ láti gbọ́ ẹjọ́ náà láàrín àkókò tí ó yẹ, láti ọ̀dọ̀ ilé ẹjọ́ tàbí ilé ẹjọ́ tí ó jẹ́ olómìnira àti aláìṣègbè ní tòótọ́, àti láti jẹ́ kí ẹjọ́ náà wáyé ní gbangba. Èyí ni ẹ̀tọ́ tí gbogbo nǹkan mìíràn nínú ẹjọ́ (olùtumọ̀, agbẹjọ́rò, tí a bá ti sọ fún un nípa ẹ̀sùn náà) wà lábẹ́ rẹ̀, ṣùgbọ́n ó tún dúró fúnra rẹ̀: ẹjọ́ kan lè jẹ́ “òdodo” ní ti ìmọ̀ nípa títẹ̀lé ìlànà náà, ó sì tún lè rú ẹ̀tọ́ yìí tí ó bá pẹ́ fún ọ̀pọ̀ ọdún, tàbí tí adájọ́/agbẹjọ́rò bá ní ipa nínú àbájáde náà.",
+        "in_practice": "",
+        "say": [
+          "Ẹjọ́ yìí ti pẹ́ fún ọ̀pọ̀ ọdún láìsí ìlọsíwájú — ìyẹn jẹ́ ìrúfin ẹ̀tọ́ mi sí ìgbọ́ran láàárín àkókò tí ó yẹ.",
+          "Mi ò gbàgbọ́ pé ilé ẹjọ́ yìí lè jẹ́ aláìṣègbè, nítorí [ìforígbárí pàtó kan] — mo fẹ́ kí wọ́n gbé e kalẹ̀ ní àkọsílẹ̀.",
+          "Ìgbẹ́jọ́ yìí yẹ kí ó wáyé ní gbangba. Kí ló dé tí wọ́n fi ń ṣe é ní ìkọ̀kọ̀?",
+          "Ìdájọ́/ìpinnu náà gbọ́dọ̀ wáyé ní ilé ẹjọ́ tí ó ṣí sílẹ̀, kìí ṣe ní àwọn yàrá ìgbìmọ̀."
+        ]
+      },
+      "ha": {
+        "title": "Haƙƙin Sauraron Shari'a Mai Kyau",
+        "plain": "Duk wanda ke fuskantar shari'ar kotu - ta farar hula ko ta laifi - yana da 'yancin a saurari wannan shari'ar cikin lokaci mai dacewa, ta hanyar kotu ko kotun da ke da 'yancin kai da son kai, da kuma a gudanar da shari'ar a bainar jama'a. Wannan ita ce 'yancin da duk wani abu da ke cikin shari'a (mai fassara, lauya, da aka sanar da shi game da tuhumar) ke ƙarƙashinsa, amma kuma yana tsaye da kansa: shari'ar na iya zama \"mai adalci\" a zahiri ta hanyar bin tsari kuma har yanzu tana karya wannan haƙƙin idan ta daɗe tsawon shekaru, ko kuma idan alkali/mai shari'a yana da hannu a cikin sakamakon.",
+        "in_practice": "Shari'o'i sun tsaya cak tsawon shekaru suna jiran shari'a, musamman inda wanda ake tuhuma yake a tsare, suna karya ka'idar \"lokaci mai kyau",
+        "say": [
+          "An dage wannan shari'ar tsawon shekaru ba tare da ci gaba ba - wannan keta haƙƙina na sauraron shari'a ne cikin lokaci mai dacewa.",
+          "Ban yi imani da cewa wannan kotun za ta iya zama mai son kai ba, idan aka yi la'akari da [takamaiman rikicin sha'awa] - ina so a yi hakan a rubuce.",
+          "Ya kamata a gudanar da wannan shari'ar a bainar jama'a. Me ya sa ake gudanar da ita a sirri?",
+          "Ya kamata a yanke hukunci/shawarar a cikin kotu, ba a cikin ɗakuna ba."
+        ]
+      }
+    },
+    {
+      "id": "dignity",
+      "stages": [
+        "arrest",
+        "first_appearance",
+        "trial"
+      ],
+      "en": {
+        "title": "Right to Humane Treatment / Dignity of Person",
+        "plain": "Every person is entitled to have their dignity respected, no matter what they're accused of. This means no torture, and no cruel, inhuman, or degrading treatment — at the point of arrest, during questioning, or while in custody. This right applies unconditionally; it isn't something that can be suspended because someone is a suspect in a serious crime.",
+        "in_practice": "Suspects are beaten or physically coerced during arrest or interrogation despite not resisting",
+        "say": [
+          "I am being mistreated. This is a violation of my right to dignity.",
+          "I need medical attention — withholding that is inhumane treatment.",
+          "Any statement obtained through force or threats against me should not be used in court.",
+          "If witnessing this happen to someone else: report it to a human rights NGO or the National Human Rights Commission."
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ sí Ìtọ́jú Ènìyàn / Ọlá Ènìyàn",
+        "plain": "Gbogbo ènìyàn ní ẹ̀tọ́ láti bọ̀wọ̀ fún ọlá wọn, láìka ohun tí wọ́n fi ẹ̀sùn kàn wọ́n sí. Èyí túmọ̀ sí pé kò sí ìfìyàjẹni, àti ìtọ́jú ìkà, àìdáa, tàbí ìtọ́jú tí kò dára sí ènìyàn — nígbà tí wọ́n bá mú wọn, nígbà tí wọ́n bá ń béèrè ìbéèrè, tàbí nígbà tí wọ́n bá wà ní àhámọ́. Ẹ̀tọ́ yìí kan láìsí àdéhùn; kì í ṣe ohun tí a lè dá dúró nítorí pé ẹnìkan jẹ́ ẹni tí a fura sí nínú ìwà ọ̀daràn ńlá kan.",
+        "in_practice": "Wọ́n máa ń lù àwọn tí wọ́n fura sí tàbí wọ́n máa ń fipá mú wọn nígbà tí wọ́n bá ń mú wọn tàbí tí wọ́n bá ń fọ̀rọ̀ wá wọn lẹ́nu wò láìsí pé wọ́n ń tako ara wọn.",
+        "say": [
+          "Wọ́n ń ṣe mí ní ibi. Èyí jẹ́ ìrúfin ẹ̀tọ́ mi sí ọlá.",
+          "Mo nílò ìtọ́jú ìṣègùn — ìfàsẹ́yìn tí ó jẹ́ ìtọ́jú àìdáa.",
+          "Kò yẹ kí a lo gbólóhùn èyíkéyìí tí a bá gbà nípasẹ̀ agbára tàbí ìhalẹ̀ sí mi nílé ẹjọ́.",
+          "Tí wọ́n bá rí i pé èyí ṣẹlẹ̀ sí ẹlòmíràn: ròyìn rẹ̀ fún àjọ tí kò ní ẹ̀tọ́ ọmọnìyàn tàbí àjọ National Human Rights Commission."
+        ]
+      },
+      "ha": {
+        "title": "Hakkin Jinƙai / Mutuncin Mutum",
+        "plain": "Kowane mutum yana da haƙƙin a girmama shi, komai zargin da ake yi masa. Wannan yana nufin babu azabtarwa, kuma babu zalunci, rashin tausayi, ko wulaƙantawa - a lokacin kama shi, yayin tambayoyi, ko yayin da yake tsare. Wannan haƙƙin yana aiki ba tare da wani sharaɗi ba; ba abu ne da za a iya dakatar da shi ba saboda ana zargin wani da aikata babban laifi.",
+        "in_practice": "Ana dukan waɗanda ake zargi ko kuma a tilasta musu yin hakan yayin kamawa ko yin tambayoyi duk da cewa ba sa nuna juriya.",
+        "say": [
+          "Ana zaluntar ni. Wannan take hakki ne na na mutunci.",
+          "Ina buƙatar kulawar likita - hana wanda ke nuna rashin tausayi.",
+          "Duk wani bayani da aka samu ta hanyar ƙarfi ko barazana a kaina bai kamata a yi amfani da shi a kotu ba.",
+          "Idan aka ga wannan ya faru ga wani: a kai rahoto ga wata ƙungiyar kare haƙƙin ɗan adam ko Hukumar Kare Hakkin Ɗan Adam ta Ƙasa."
+        ]
+      }
+    },
+    {
+      "id": "appeal",
+      "stages": [
+        "judgment"
+      ],
+      "en": {
+        "title": "Right to Appeal",
+        "plain": "If you're convicted (or the prosecution disagrees with an acquittal), the case doesn't automatically end at the first court's decision. You — or in some cases the Attorney-General — can take the matter to a higher court to be reviewed. For certain serious outcomes, like a death sentence, this right applies automatically (\"as of right\"); for others, you may need the court's permission (\"leave\") first.",
+        "in_practice": "People assume a first-court conviction is final and don't realize an appeal is possible at all",
+        "say": [
+          "I want to appeal this decision — what court does it go to, and do I need leave or is this as-of-right?",
+          "This appeal is purely on a point of law — I understand that qualifies as of right.",
+          "I was sentenced to death — I know I have an automatic right of appeal on that basis.",
+          "I can't afford legal representation for the appeal — can Legal Aid assist with this stage too?"
+        ]
+      },
+      "yo": {
+        "title": "Ẹ̀tọ́ láti Pẹ́jọ́",
+        "plain": "Tí wọ́n bá dá ọ lẹ́bi (tàbí tí àwọn agbẹjọ́rò kò gbà pẹ̀lú ìdásílẹ̀), ẹjọ́ náà kò ní parí láìfọwọ́sí ní ìpinnu ilé ẹjọ́ àkọ́kọ́. Ìwọ — tàbí nígbà míìrán, Agbẹjọ́rò Àgbà — lè gbé ọ̀ràn náà lọ sí ilé ẹjọ́ gíga láti ṣe àtúnyẹ̀wò rẹ̀. Fún àwọn àbájáde pàtàkì kan, bí ìdájọ́ ikú, ẹ̀tọ́ yìí kan ara rẹ̀ (“gẹ́gẹ́ bí ẹ̀tọ́”); fún àwọn mìíràn, o lè nílò àṣẹ ilé ẹjọ́ (“ìjáde”) ní àkọ́kọ́.",
+        "in_practice": "",
+        "say": [
+          "Mo fẹ́ pe ẹjọ́ ẹjọ́ yìí — ilé ẹjọ́ wo ni ó ń lọ, ṣé mo sì nílò ìyọ̀nda tàbí ṣé èyí jẹ́ ẹ̀tọ́ rẹ̀?",
+          "Ẹjọ́ ẹjọ́ yìí jẹ́ lórí kókó òfin lásán — mo lóye pé ó yẹ gẹ́gẹ́ bí ẹ̀tọ́ rẹ̀.",
+          "Wọ́n dá mi lẹ́bi ikú — Mo mọ̀ pé mo ní ẹ̀tọ́ ẹjọ́ láìfọwọ́sí lórí ìpìlẹ̀ yẹn.",
+          "Mi ò lè gba aṣojú òfin fún ẹjọ́ náà — ṣé Legal Aid náà lè ran mí lọ́wọ́ pẹ̀lú?"
+        ]
+      },
+      "ha": {
+        "title": "Haƙƙin ɗaukaka ƙara",
+        "plain": "Idan an same ka da laifi (ko kuma mai gabatar da ƙara bai yarda da wanke ka ba), shari'ar ba ta ƙare kai tsaye a hukuncin kotu na farko ba. Kai — ko a wasu lokuta Babban Lauyan Gwamnati — za ka iya kai ƙarar zuwa babbar kotu don a sake duba lamarin. Don wasu manyan sakamako, kamar hukuncin kisa, wannan haƙƙin yana aiki ta atomatik (\"kamar yadda yake da hakki\"); ga wasu, za ka iya buƙatar izinin kotu (\"bari\") da farko.",
+        "in_practice": "Mutane suna ɗauka cewa hukuncin kotu na farko shine na ƙarshe kuma ba sa fahimtar cewa ɗaukaka ƙara zai yiwu kwata-kwata",
+        "say": [
+          "Ina so in ɗaukaka ƙarar wannan shawarar — wacce kotu ce take zuwa, kuma ina buƙatar izini ko wannan shine daidai?",
+          "Wannan ɗaukaka ƙarar ta dogara ne kawai akan wani batu na doka — na fahimci cewa ta cancanci a matsayin haƙƙi.",
+          "An yanke min hukuncin kisa — Na san ina da haƙƙin ɗaukaka ƙara ta atomatik akan wannan tushen.",
+          "Ba zan iya biyan kuɗin wakilcin lauya don ɗaukaka ƙarar ba - shin Legal Aid zai iya taimakawa a wannan matakin?"
         ]
       }
     }
