@@ -1,40 +1,54 @@
-# Court Rights Voice Guide
+# Court Rights
 
-Voice-first legal-information app for the Sahara CodeSwitch Africa Challenge (Legal & Public Services). Speak in English, Yoruba, Hausa, or a mix. Sahara transcribes; the app returns first-appearance rights and what you can say.
+A voice-first guide to Nigerian first-appearance rights. Speak in English, Yoruba, Hausa, or a mix. [Sahara](https://docs.voice.intron.io/docs/index/introduction) transcribes the audio; the API returns what happens in court, key rights, and phrases you can use.
 
-This is information, not legal advice.
+This is general information, not legal advice. For a real case, contact a lawyer or [Legal Aid](https://nulai.org).
 
-## What is in this repo (Person B)
+**Live API:** [https://legal-ai-api-c6v0.onrender.com/api/health](https://legal-ai-api-c6v0.onrender.com/api/health)
 
-- `backend/` — FastAPI. Sahara STT/TTS stay on the server so the API key is never in the browser.
+## Features
+
+- Language picker: English, Yoruba, Hausa
+- Hold-to-talk or typed questions
+- First-appearance workflow, rights, and sample phrases
+- Optional spoken reply (Sahara TTS)
+- Content in `content/` (English, Yoruba, Hausa)
+
+## Stack
+
+| Layer | Tech |
+|---|---|
+| API | FastAPI, Sahara STT/TTS |
+| UI | Vite, React |
+| Content | JSON (`content/`) |
+
+## Repository
 
 ```
-backend/
-  app.py                 # create_app(), middleware, mount routers
-  core/config.py         # paths, env, CORS
-  api/router.py          # /api prefix
-  api/routes/            # health, guide, voice, pages
-  schemas/               # request models
-  services/              # content, intent, Sahara, pack_answer
+backend/     FastAPI app
+frontend/    Vite + React
+content/     Rights, workflow, disclaimers
+prompts/     Agent system prompt
+scripts/     Markdown → JSON converter
 ```
-- `frontend/` — Phone-first hold-to-talk UI.
-- `content/` — Rights, workflow, disclaimers. Person A should refine Yoruba/Hausa.
 
-## Setup
+## Local development
 
-1. Env files are **separate** (backend and frontend deploy on different hosts).
+**1. Environment**
 
 ```powershell
 Copy-Item backend\.env.example backend\.env
 Copy-Item frontend\.env.example frontend\.env
 ```
 
-- `backend/.env`: `INTRON_API_KEY` (Developer tab) and later `CORS_ORIGINS` with the live UI URL.
-- `frontend/.env`: `VITE_INTRON_WIDGET_KEY` (View Integration) and `VITE_API_BASE` (empty locally; the live API URL in production).
+| File | Variables |
+|---|---|
+| `backend/.env` | `INTRON_API_KEY`, `CORS_ORIGINS`, Sahara URLs |
+| `frontend/.env` | `VITE_API_BASE` (empty locally; Render URL in production) |
 
-A root `.env` still works as a local fallback for the backend only.
+Get `INTRON_API_KEY` from [voice.intron.io](https://voice.intron.io) → Developer.
 
-2. Backend (terminal 1):
+**2. API** (repo root)
 
 ```powershell
 python -m venv .venv
@@ -43,7 +57,7 @@ pip install -r requirements.txt
 uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
-3. Vite + React UI (terminal 2):
+**3. UI**
 
 ```powershell
 cd frontend
@@ -51,30 +65,48 @@ npm install
 npm run dev
 ```
 
-4. Open http://127.0.0.1:5173
-
-Optional: put `VITE_INTRON_WIDGET_KEY` in `frontend/.env` for the official widget. Without it, hold-to-talk still uses `/api/transcribe`.
-
-## Try it
-
-1. Pick English, Yoruba, or Hausa.
-2. Hold the green button and say something like: “They gave me a court date. What are my rights?”
-3. Release. Sahara should show a transcript, then rights and sample phrases.
-4. Optional: type instead of speaking, or tap **Hear the short answer** (Sahara TTS).
-
-Language codes sent to Sahara: `en`, `yo` (Yoruba–English), `ha` (Hausa–English). See [Intron Voice docs](https://docs.voice.intron.io/docs/index/introduction).
+Open [http://127.0.0.1:5173](http://127.0.0.1:5173). With `VITE_API_BASE` empty, Vite proxies `/api` to port 8000.
 
 ## API
 
-| Method | Path | Purpose |
+| Method | Path | Description |
 |---|---|---|
-| GET | `/api/briefing?language=en` | First-appearance pack |
-| POST | `/api/transcribe` | Audio + language → Sahara STT → rights |
-| POST | `/api/ask` | Typed question → same content |
-| POST | `/api/speak` | Short Sahara TTS line |
+| `GET` | `/api/health` | Liveness |
+| `GET` | `/api/briefing?language=en` | First-appearance pack (`en` / `yo` / `ha`) |
+| `POST` | `/api/ask` | `{ "text", "language" }` → same pack |
+| `POST` | `/api/transcribe` | Audio + language → Sahara STT → pack |
+| `POST` | `/api/speak` | Short Sahara TTS clip |
 
-## Next (still Person B)
+Sahara language codes: `en`, `yo` (Yoruba–English), `ha` (Hausa–English).
 
-- Benchmark Sahara vs 2 other models in `../imb` on Yoruba–English / Hausa–English clips.
-- Document upload / compare.
-- Deploy a phone-reachable URL.
+## Deployment
+
+The repo is a monorepo. API and UI are separate hosts.
+
+**Render (API)** — root directory empty:
+
+```text
+Build:  pip install -r requirements.txt
+Start:  uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+```
+
+Set `INTRON_API_KEY` and `CORS_ORIGINS` (include the Vercel origin).
+
+**Vercel (UI)** — root directory `frontend`:
+
+```text
+Build:   npm run build
+Output:  dist
+```
+
+Set `VITE_API_BASE` to `https://legal-ai-api-c6v0.onrender.com` (no trailing slash), then redeploy.
+
+## Content updates
+
+Legal copy is maintained as markdown and converted into `content/*.json`:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\convert_legal_content.py
+```
+
+Restart the API after converting so it reloads JSON.
