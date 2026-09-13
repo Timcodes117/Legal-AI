@@ -50,6 +50,19 @@ def to_wav_bytes(array, sampling_rate: int) -> bytes:
     return buf.getvalue()
 
 
+def login_hf() -> None:
+    token = os.getenv("HF_TOKEN", "").strip()
+    if not token or token == "paste_your_hf_token_here":
+        raise SystemExit(
+            "AfriSwitch is gated. 1) Open https://huggingface.co/datasets/intronhealth/AfriSwitch "
+            "and accept access. 2) Create a token at https://huggingface.co/settings/tokens "
+            "3) Add HF_TOKEN=... to backend/.env"
+        )
+    from huggingface_hub import login
+
+    login(token=token, add_to_git_credential=False)
+
+
 def load_clips(config: str, limit: int, max_seconds: float):
     from datasets import load_dataset
 
@@ -175,6 +188,7 @@ async def main() -> int:
 
         intron_api_key()
 
+    login_hf()
     print("Loading AfriSwitch clips (streaming, short clips only)...")
     clips = []
     for config in LANGS:

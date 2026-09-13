@@ -23,11 +23,13 @@ def pack_answer(language: str, transcript: str, source: str) -> dict:
     workflow = bundle["workflow"] if focus in ("workflow", "both") else None
     rights = bundle["rights"] if focus in ("rights", "both") else None
     grounded = False
+    grounded_error = ""
 
     if transcript.strip():
-        refined = refine_answer(language, transcript, bundle)
+        refined, grounded_error = refine_answer(language, transcript, bundle)
         if refined:
             grounded = True
+            grounded_error = ""
             summary = refined["spoken_summary"]
             if refined["right_ids"]:
                 chosen = {item_id for item_id in refined["right_ids"]}
@@ -43,6 +45,7 @@ def pack_answer(language: str, transcript: str, source: str) -> dict:
         "source": source,
         "focus": focus,
         "grounded": grounded,
+        "grounded_error": grounded_error,
         "scenario_id": bundle["scenario_id"],
         "disclaimer": bundle["disclaimer"],
         "spoken_summary": summary,

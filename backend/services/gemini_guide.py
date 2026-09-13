@@ -4,6 +4,11 @@ import re
 from backend.core.config import ROOT, gemini_api_key, gemini_model
 
 RULES = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
+MODELS = (
+    gemini_model(),
+    "gemini-2.0-flash",
+    "gemini-2.5-flash",
+)
 
 
 def _compact(bundle: dict) -> dict:
@@ -26,12 +31,27 @@ def _compact(bundle: dict) -> dict:
     }
 
 
-def refine_answer(language: str, transcript: str, bundle: dict) -> dict | None:
+def _parse_json(raw: str) -> dict:
+    text = (raw or "").strip()
+    fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.S)
+    if fenced:
+        text = fenced.group(1)
+    else:
+        start = text.find("{")
+        end = text.rfind("}")
+        if start >= 0 and end > start:
+            text = text[start : end + 1]
+    return json.loads(text)
+
+
+def refine_answer(language: str, transcript: str, bundle: dict) -> tuple[dict | None, str]:
     """Use Gemini to answer the user's words from the approved JSON only."""
     key = gemini_api_key()
     asked = (transcript or "").strip()
-    if not key or not asked:
-        return None
+    if not key:
+        return None, "GEMINI_API_KEY is not set on this server."
+    if not asked:
+        return None, ""
 
     allowed_ids = {item["id"] for item in bundle["rights"]}
     payload = {
@@ -56,23 +76,28 @@ include_workflow is true only if they asked what happens in court today.
 JSON:
 {json.dumps(payload, ensure_ascii=False)}
 """
+    last_error = "Gemini returned no usable answer."
     try:
         from google import genai
+    except Exception as exc:
+        return None, f"google-genai is not installed: {exc}"
 
-        client = genai.Client(api_key=key)
-        response = client.models.generate_content(model=gemini_model(), contents=prompt)
-        raw = (response.text or "").strip()
-        raw = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw)
-        data = json.loads(raw)
-    except Exception:
-        return None
-
-    summary = str(data.get("spoken_summary") or "").strip()
-    ids = [item for item in data.get("right_ids") or [] if item in allowed_ids]
-    if not summary:
-        return None
-    return {
-        "spoken_summary": summary,
-        "right_ids": ids,
-        "include_workflow": bool(data.get("include_workflow")),
-    }
+    client = genai.Client(api_key=key)
+    for model in dict.fromkeys(MODELS):
+        try:
+            response = client.models.generate_content(model=model, contents=prompt)
+            data = _parse_json(response.text or "")
+            summary = str(data.get("spoken_summary") or "").strip()
+            ids = [item for item in data.get("right_ids") or [] if item in allowed_ids]
+            if not summary:
+                last_error = f"{model} returned JSON without spoken_summary."
+                continue
+            return {
+                "spoken_summary": summary,
+                "right_ids": ids,
+                "include_workflow": bool(data.get("include_workflow")),
+            }, ""
+        except Exception as exc:
+            last_error = f"{model}: {exc}"
+            continue
+    return None, last_error[:280]
