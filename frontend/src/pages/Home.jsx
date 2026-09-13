@@ -98,7 +98,7 @@ export default function Home() {
           <label>{copy.youSaid}</label>
           <p className="transcript">{answer.transcript}</p>
           {answer.spoken_summary ? <p className="spoken">{answer.spoken_summary}</p> : null}
-          {answer.grounded_error ? <p className="error">{answer.grounded_error}</p> : null}
+          {answer.grounded_error ? <p className="helper-note">{answer.grounded_error}</p> : null}
           {answer.spoken_summary ? (
             <button className="ghost-btn" type="button" onClick={hearAnswer} disabled={busy}>
               {busy ? <ButtonSpinner size={16} /> : null}

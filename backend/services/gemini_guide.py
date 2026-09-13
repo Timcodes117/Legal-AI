@@ -1,5 +1,6 @@
 import json
 import re
+import time
 
 from backend.core.config import ROOT, gemini_api_key, gemini_model
 
@@ -11,7 +12,6 @@ RETIRED_MODELS = (
 )
 CURRENT_MODELS = (
     "gemini-3.6-flash",
-    "gemini-3.8-flash",
 )
 
 
@@ -99,20 +99,25 @@ JSON:
 
     client = genai.Client(api_key=key)
     for model in _models():
-        try:
-            response = client.models.generate_content(model=model, contents=prompt)
-            data = _parse_json(response.text or "")
-            summary = str(data.get("spoken_summary") or "").strip()
-            ids = [item for item in data.get("right_ids") or [] if item in allowed_ids]
-            if not summary:
-                last_error = f"{model} returned JSON without spoken_summary."
-                continue
-            return {
-                "spoken_summary": summary,
-                "right_ids": ids,
-                "include_workflow": bool(data.get("include_workflow")),
-            }, ""
-        except Exception as exc:
-            last_error = f"{model}: {exc}"
-            continue
+        for attempt in range(2):
+            try:
+                response = client.models.generate_content(model=model, contents=prompt)
+                data = _parse_json(response.text or "")
+                summary = str(data.get("spoken_summary") or "").strip()
+                ids = [item for item in data.get("right_ids") or [] if item in allowed_ids]
+                if not summary:
+                    last_error = f"{model} returned JSON without spoken_summary."
+                    break
+                return {
+                    "spoken_summary": summary,
+                    "right_ids": ids,
+                    "include_workflow": bool(data.get("include_workflow")),
+                }, ""
+            except Exception as exc:
+                last_error = f"{model}: {exc}"
+                text = str(exc)
+                if attempt == 0 and ("503" in text or "UNAVAILABLE" in text):
+                    time.sleep(0.8)
+                    continue
+                break
     return None, last_error[:280]

@@ -1,6 +1,6 @@
 from backend.services.content import first_appearance, lang_or_en, spoken_summary
 from backend.services.gemini_guide import refine_answer
-from backend.services.intent import infer_focus, is_unsafe
+from backend.services.intent import infer_focus, infer_right_ids, is_unsafe
 
 MAX_RIGHTS = 3
 DEFAULT_RIGHT_IDS = ("counsel", "bail", "informed_of_charges")
@@ -54,10 +54,11 @@ def pack_answer(language: str, transcript: str, source: str) -> dict:
 
     bundle = first_appearance(language)
     focus = infer_focus(transcript)
-    summary = spoken_summary(language)
+    hinted = infer_right_ids(transcript)
+    summary = spoken_summary(language, hinted)
     workflow = bundle["workflow"] if focus in ("workflow", "both") else None
-    rights = _pick_rights(bundle, DEFAULT_RIGHT_IDS if focus in ("rights", "both") else None)
-    if focus == "workflow":
+    rights = _pick_rights(bundle, hinted or (DEFAULT_RIGHT_IDS if focus in ("rights", "both") else None))
+    if focus == "workflow" and not hinted:
         rights = None
     grounded = False
     grounded_error = ""
@@ -68,9 +69,16 @@ def pack_answer(language: str, transcript: str, source: str) -> dict:
             grounded = True
             grounded_error = ""
             summary = refined["spoken_summary"]
-            rights = _pick_rights(bundle, refined.get("right_ids"))
+            rights = _pick_rights(bundle, refined.get("right_ids") or hinted)
             workflow = bundle["workflow"] if refined["include_workflow"] else None
             focus = "both" if workflow and rights else "workflow" if workflow else "rights"
+        elif grounded_error:
+            busy = {
+                "en": "Live helper is busy. Showing the saved guide.",
+                "yo": "Olùrànlọ́wọ́ kò sí nísinsìnyí. À ń fi ìtọ́sọ́nà tó wà hàn.",
+                "ha": "Mai taimako yana aiki yanzu. Muna nuna jagorar da aka ajiye.",
+            }
+            grounded_error = busy.get(language, busy["en"])
 
     return {
         "ok": True,

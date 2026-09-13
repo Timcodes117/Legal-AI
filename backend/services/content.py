@@ -50,10 +50,34 @@ def first_appearance(language: str) -> dict:
     }
 
 
-def spoken_summary(language: str) -> str:
+FALLBACK_SUMMARIES = {
+    "interpreter": {
+        "en": "If you do not understand the judge, say so out loud and ask for an interpreter. You have the right to hear the charge in a language you understand. This is not legal advice.",
+        "yo": "Tí o kò bá lóye ohun tí adájọ́ sọ, sọ bẹ́ẹ̀ kí o béèrè olùtumọ̀. O ní ẹ̀tọ́ láti gbọ́ ẹ̀sùn ní èdè tí o lóye. Èyí kì í ṣe agbẹjọ́rò.",
+        "ha": "Idan ba ka fahimci abin da alkali ya ce ba, faɗa haka ka nemi mai fassara. Kana da hakkin jin tuhumar a yaren da ka fahimta. Wannan ba lauya ba ne.",
+    },
+    "counsel": {
+        "en": "You can ask for a lawyer, including free Legal Aid if you cannot pay. You do not have to answer questions until a lawyer is with you. This is not legal advice.",
+        "yo": "O lè béèrè agbẹjọ́rò, tàbí Legal Aid tí o kò bá lówó. O kò ní láti dáhùn títí agbẹjọ́rò yóò fi dé. Èyí kì í ṣe agbẹjọ́rò.",
+        "ha": "Za ka iya neman lauya, ko Legal Aid idan ba ka da kuɗi. Ba lallai ka amsa tambayoyi ba har lauya ya zo. Wannan ba lauya ba ne.",
+    },
+    "bail": {
+        "en": "You can ask if you are entitled to bail and on what conditions. Bail itself is free — paying an officer for bail is illegal. This is not legal advice.",
+        "yo": "O lè béèrè bóyá o lè gba bail àti àwọn ìpinnu rẹ̀. Bail fúnrarẹ̀ kò ní owó — jíjẹ owó fún ọlọ́pàá fún bail jẹ́ òfin. Èyí kì í ṣe agbẹjọ́rò.",
+        "ha": "Za ka iya tambayar ko za a ba ka beli da sharuddan sa. Beli kyauta ne — biyan jami'i don beli haramun ne. Wannan ba lauya ba ne.",
+    },
+}
+
+
+def spoken_summary(language: str, right_ids: list[str] | None = None) -> str:
+    language = lang_or_en(language)
+    for right_id in right_ids or []:
+        block = FALLBACK_SUMMARIES.get(right_id)
+        if block:
+            return block.get(language) or block["en"]
     summaries = {
         "en": "At first appearance, ask for a lawyer, an interpreter, and bail. This is not legal advice.",
         "yo": "Ní ìfarahàn àkọ́kọ́, béèrè agbẹjọ́rò, interpreter, àti bail. Èyí kì í ṣe agbẹjọ́rò.",
         "ha": "A bayyanar farko, nemi lauya, mai fassara, da beli. Wannan ba lauya ba ne.",
     }
-    return summaries.get(lang_or_en(language), summaries["en"])
+    return summaries.get(language, summaries["en"])
