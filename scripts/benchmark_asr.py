@@ -170,7 +170,7 @@ def parse_args():
     parser.add_argument("--max-seconds", type=float, default=12.0)
     parser.add_argument("--sleep", type=float, default=1.2, help="pause between API calls")
     parser.add_argument("--whisper-model", default=os.getenv("WHISPER_MODEL", "tiny"))
-    parser.add_argument("--gemini-model", default=os.getenv("GEMINI_STT_MODEL", "gemini-2.0-flash"))
+    parser.add_argument("--gemini-model", default=os.getenv("GEMINI_STT_MODEL", "gemini-3.6-flash"))
     parser.add_argument("--skip-whisper", action="store_true")
     parser.add_argument("--skip-gemini", action="store_true")
     parser.add_argument("--skip-sahara", action="store_true")

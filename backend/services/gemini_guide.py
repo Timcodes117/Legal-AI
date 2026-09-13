@@ -5,9 +5,9 @@ from backend.core.config import ROOT, gemini_api_key, gemini_model
 
 RULES = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
 MODELS = (
+    "gemini-3.6-flash",
     gemini_model(),
     "gemini-2.0-flash",
-    "gemini-2.5-flash",
 )
 
 

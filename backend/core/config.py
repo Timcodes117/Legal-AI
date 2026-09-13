@@ -45,4 +45,4 @@ def gemini_api_key() -> str:
 
 
 def gemini_model() -> str:
-    return os.getenv("GEMINI_STT_MODEL", "gemini-2.0-flash").strip() or "gemini-2.0-flash"
+    return os.getenv("GEMINI_STT_MODEL", "gemini-3.6-flash").strip() or "gemini-3.6-flash"
