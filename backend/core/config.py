@@ -45,4 +45,6 @@ def gemini_api_key() -> str:
 
 
 def gemini_model() -> str:
-    return os.getenv("GEMINI_STT_MODEL", "gemini-3.6-flash").strip() or "gemini-3.6-flash"
+    raw = os.getenv("GEMINI_STT_MODEL", "gemini-3.6-flash").strip() or "gemini-3.6-flash"
+    retired = ("gemini-1.5-flash", "gemini-2.0-flash", "gemini-2.5-flash")
+    return "gemini-3.6-flash" if raw in retired else raw

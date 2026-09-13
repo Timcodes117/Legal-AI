@@ -4,11 +4,24 @@ import re
 from backend.core.config import ROOT, gemini_api_key, gemini_model
 
 RULES = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
-MODELS = (
-    "gemini-3.6-flash",
-    gemini_model(),
+RETIRED_MODELS = (
+    "gemini-1.5-flash",
     "gemini-2.0-flash",
+    "gemini-2.5-flash",
 )
+CURRENT_MODELS = (
+    "gemini-3.6-flash",
+    "gemini-3.8-flash",
+)
+
+
+def _models() -> tuple[str, ...]:
+    chosen = gemini_model()
+    names = [CURRENT_MODELS[0]]
+    if chosen and chosen not in RETIRED_MODELS:
+        names.append(chosen)
+    names.extend(CURRENT_MODELS)
+    return tuple(dict.fromkeys(names))
 
 
 def _compact(bundle: dict) -> dict:
@@ -85,7 +98,7 @@ JSON:
         return None, f"google-genai is not installed: {exc}"
 
     client = genai.Client(api_key=key)
-    for model in dict.fromkeys(MODELS):
+    for model in _models():
         try:
             response = client.models.generate_content(model=model, contents=prompt)
             data = _parse_json(response.text or "")
