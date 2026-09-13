@@ -28,6 +28,8 @@ frontend/dist-ssr/
 credentials.json
 
 # local audio / uploads
+benchmark/cache/
+benchmark/results/wer.json
 *.webm
 *.wav
 *.mp3

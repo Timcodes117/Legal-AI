@@ -1,11 +1,39 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { askText, getBriefing, speak, transcribeAudio } from "../api.js";
-import { ui } from "../copy.js";
+import { LANGS, ui } from "../copy.js";
+
+const LANG_KEY = "sahara-language";
+
+function readSavedLanguage() {
+  try {
+    const saved = localStorage.getItem(LANG_KEY);
+    if (LANGS.some((item) => item.id === saved)) return saved;
+  } catch {
+    /* ignore */
+  }
+  return null;
+}
 
 const GuideContext = createContext(null);
 
 export function GuideProvider({ children }) {
-  const [language, setLanguage] = useState("en");
+  const savedLanguage = readSavedLanguage();
+  const [language, setLanguageState] = useState(savedLanguage || "en");
+  const [welcomeOpen, setWelcomeOpen] = useState(savedLanguage === null);
+
+  function setLanguage(next) {
+    setLanguageState(next);
+    try {
+      localStorage.setItem(LANG_KEY, next);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function chooseLanguage(next) {
+    setLanguage(next);
+    setWelcomeOpen(false);
+  }
   const [typed, setTyped] = useState("");
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
@@ -15,6 +43,7 @@ export function GuideProvider({ children }) {
   const [audioUrl, setAudioUrl] = useState("");
   const [recording, setRecording] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState(false);
   const recorderRef = useRef(null);
   const chunksRef = useRef([]);
   const copy = ui[language];
@@ -22,6 +51,7 @@ export function GuideProvider({ children }) {
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
+    setBusy(true);
     getBriefing(language)
       .then((data) => {
         if (cancelled) return;
@@ -35,7 +65,10 @@ export function GuideProvider({ children }) {
         if (!cancelled) setError(err.message);
       })
       .finally(() => {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+          setBusy(false);
+        }
       });
     return () => {
       cancelled = true;
@@ -49,26 +82,39 @@ export function GuideProvider({ children }) {
   }
 
   async function handleTyped() {
-    if (!typed.trim()) return;
+    if (!typed.trim() || busy) return;
+    setError("");
+    setStatus(copy.sending);
+    setBusy(true);
     try {
       applyAnswer(await askText(typed.trim(), language), true);
     } catch (err) {
       setError(err.message);
+    } finally {
+      setStatus("");
+      setBusy(false);
     }
+  }
+
+  function pickRecorderType() {
+    const types = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"];
+    return types.find((type) => typeof MediaRecorder !== "undefined" && MediaRecorder.isTypeSupported(type));
   }
 
   async function startRecording(event) {
     event.preventDefault();
-    if (recorderRef.current?.state === "recording") return;
+    if (busy || recorderRef.current?.state === "recording") return;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunksRef.current = [];
-      const recorder = new MediaRecorder(stream);
+      const mimeType = pickRecorderType();
+      const recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
       recorder.ondataavailable = (e) => {
         if (e.data.size) chunksRef.current.push(e.data);
       };
-      recorder.start();
+      recorder.start(250);
       recorderRef.current = recorder;
+      event.currentTarget?.setPointerCapture?.(event.pointerId);
       setRecording(true);
       setStatus(copy.listening);
     } catch {
@@ -80,32 +126,40 @@ export function GuideProvider({ children }) {
     event.preventDefault();
     const recorder = recorderRef.current;
     if (!recorder || recorder.state !== "recording") return;
+    if (event.currentTarget?.hasPointerCapture?.(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
     const done = new Promise((resolve) => {
       recorder.onstop = resolve;
     });
     recorder.stop();
     recorder.stream.getTracks().forEach((track) => track.stop());
+    recorderRef.current = null;
     setRecording(false);
     await done;
     const blob = new Blob(chunksRef.current, { type: recorder.mimeType || "audio/webm" });
     if (!blob.size) {
       setStatus("");
+      setError("No audio was captured. Hold the button, speak, then release.");
       return;
     }
     setStatus(copy.sending);
+    setBusy(true);
     try {
       applyAnswer(await transcribeAudio(blob, language), true);
     } catch (err) {
       setError(err.message);
     } finally {
       setStatus("");
+      setBusy(false);
     }
   }
 
   async function hearAnswer() {
     const text = answer?.spoken_summary;
-    if (!text) return;
+    if (!text || busy) return;
     setStatus("Generating speech…");
+    setBusy(true);
     try {
       const data = await speak(text, language);
       if (!data.audio_url) throw new Error("Could not generate speech.");
@@ -114,6 +168,7 @@ export function GuideProvider({ children }) {
       setError(err.message);
     } finally {
       setStatus("");
+      setBusy(false);
     }
   }
 
@@ -121,6 +176,8 @@ export function GuideProvider({ children }) {
     () => ({
       language,
       setLanguage,
+      welcomeOpen,
+      chooseLanguage,
       copy,
       typed,
       setTyped,
@@ -132,6 +189,7 @@ export function GuideProvider({ children }) {
       audioUrl,
       recording,
       loading,
+      busy,
       handleTyped,
       startRecording,
       stopRecording,
@@ -139,6 +197,7 @@ export function GuideProvider({ children }) {
     }),
     [
       language,
+      welcomeOpen,
       copy,
       typed,
       status,
@@ -149,6 +208,7 @@ export function GuideProvider({ children }) {
       audioUrl,
       recording,
       loading,
+      busy,
     ]
   );
 

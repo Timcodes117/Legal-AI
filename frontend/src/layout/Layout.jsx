@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import {
   IconChat,
-  IconClose,
   IconGlobe,
   IconHome,
   IconInfo,
@@ -11,6 +10,8 @@ import {
   IconShield,
   IconWave,
 } from "../components/Icons.jsx";
+import { StatusSpinner } from "../components/Activity.jsx";
+import WelcomeModal from "../components/WelcomeModal.jsx";
 import { LANGS } from "../copy.js";
 import { useGuide } from "../context/GuideContext.jsx";
 
@@ -22,7 +23,7 @@ const NAV = [
 ];
 
 export default function Layout() {
-  const { copy, language, setLanguage, recording, status } = useGuide();
+  const { copy, language, setLanguage, recording, status, busy } = useGuide();
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -44,6 +45,25 @@ export default function Layout() {
           </div>
         </div>
 
+        <div className="side-lang">
+          <label className="lang-label" htmlFor="lang-select">
+            <IconGlobe size={15} />
+            {copy.language}
+          </label>
+          <select
+            id="lang-select"
+            value={language}
+            disabled={busy}
+            onChange={(event) => setLanguage(event.target.value)}
+          >
+            {LANGS.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <nav className="side-nav" onClick={() => setOpen(false)}>
           {NAV.map((item) => {
             const Icon = item.icon;
@@ -56,24 +76,6 @@ export default function Layout() {
           })}
         </nav>
 
-        <div className="side-foot">
-          <label className="lang-label" htmlFor="lang-select">
-            <IconGlobe size={15} />
-            {copy.language}
-          </label>
-          <select
-            id="lang-select"
-            value={language}
-            onChange={(event) => setLanguage(event.target.value)}
-          >
-            {LANGS.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.label}
-              </option>
-            ))}
-          </select>
-          <p className="lang-hint">{copy.languageHint}</p>
-        </div>
       </aside>
 
       <div className="main-col">
@@ -82,9 +84,18 @@ export default function Layout() {
             <IconMenu />
           </button>
           <div className="top-status">
-            <span className={`dot${recording ? " live" : ""}`} />
-            <span>{recording ? copy.listening : copy.saharaReady}</span>
-            <IconWave size={16} />
+            {busy ? (
+              <>
+                <StatusSpinner />
+                <span>{status || copy.sending}</span>
+              </>
+            ) : (
+              <>
+                <span className={`dot${recording ? " live" : ""}`} />
+                <span>{recording ? copy.listening : copy.ready}</span>
+                <IconWave size={16} />
+              </>
+            )}
           </div>
         </header>
         <div className="page">
@@ -92,6 +103,7 @@ export default function Layout() {
         </div>
         {status ? <p className="sr-status">{status}</p> : null}
       </div>
+      <WelcomeModal />
     </div>
   );
 }

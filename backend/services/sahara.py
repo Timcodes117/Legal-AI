@@ -48,8 +48,8 @@ async def transcribe_audio(
 async def speak_text(text: str, language: str) -> dict:
     voice = TTS_VOICE.get(language, TTS_VOICE["en"])
     spoken = (text or "").strip()
-    if len(spoken) > 90:
-        spoken = spoken[:87].rsplit(" ", 1)[0] + "..."
+    if len(spoken) > 220:
+        spoken = spoken[:217].rsplit(" ", 1)[0] + "..."
     async with httpx.AsyncClient(timeout=120.0) as client:
         response = await client.post(
             TTS_URL,

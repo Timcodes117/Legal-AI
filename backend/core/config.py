@@ -35,3 +35,14 @@ def intron_api_key() -> str:
     if not key or key == "paste_your_key_here":
         raise RuntimeError("Set INTRON_API_KEY in backend/.env or the host environment.")
     return key
+
+
+def gemini_api_key() -> str:
+    key = os.getenv("GEMINI_API_KEY", "").strip()
+    if not key or key == "paste_your_gemini_key_here":
+        return ""
+    return key
+
+
+def gemini_model() -> str:
+    return os.getenv("GEMINI_STT_MODEL", "gemini-2.0-flash").strip() or "gemini-2.0-flash"
