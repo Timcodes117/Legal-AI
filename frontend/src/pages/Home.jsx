@@ -106,19 +106,33 @@ export default function Home() {
             </button>
           ) : null}
           {audioUrl ? <audio src={audioUrl} controls autoPlay /> : null}
-          {answer.workflow ? (
-            <ol className="expect-list tight">
-              {answer.workflow.steps.map((step) => (
-                <li key={step}>{step}</li>
-              ))}
-            </ol>
+          {(answer.rights || []).some((right) => (right.say || []).length) ? (
+            <div className="answer-next">
+              <h3>{copy.sayThis}</h3>
+              <ul className="say">
+                {(answer.rights || []).flatMap((right) => (right.say || []).slice(0, 1)).map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+              <Link className="see-more inline" to="/rights">
+                {copy.rightsTitle} <IconChevron size={16} />
+              </Link>
+            </div>
           ) : null}
-          {(answer.rights || []).map((right) => (
-            <article className="right-block" key={right.id || right.title}>
-              <h3>{right.title}</h3>
-              <p>{right.plain}</p>
-            </article>
-          ))}
+          {answer.workflow?.steps?.length ? (
+            <div className="answer-next">
+              <h3>{copy.expectToday}</h3>
+              <ol className="expect-list tight">
+                {answer.workflow.steps.slice(0, 3).map((step) => {
+                  const title = step.includes(":") ? step.slice(0, step.indexOf(":")) : step;
+                  return <li key={step}>{title}</li>;
+                })}
+              </ol>
+              <Link className="see-more inline" to="/about#expect">
+                {copy.seeMore} <IconChevron size={16} />
+              </Link>
+            </div>
+          ) : null}
         </section>
       ) : null}
 

@@ -68,10 +68,12 @@ Return JSON only, no markdown:
 {{
   "spoken_summary": "2 to 4 short sentences that actually answer the user",
   "right_ids": ["id", "..."],
-  "include_workflow": true
+  "include_workflow": false
 }}
-right_ids must be a subset of the ids in the JSON. Pick only what the user asked about.
-include_workflow is true only if they asked what happens in court today.
+right_ids must be a subset of the ids in the JSON. Pick at most 3.
+If they ask what they can do about their case, prefer counsel, bail, and informed_of_charges.
+Do not return every right.
+include_workflow is true only if they asked what happens in court, who will be there, or what they will be asked.
 
 JSON:
 {json.dumps(payload, ensure_ascii=False)}
