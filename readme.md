@@ -90,7 +90,7 @@ Build:  pip install -r requirements.txt
 Start:  uvicorn backend.app:app --host 0.0.0.0 --port $PORT
 ```
 
-Set `INTRON_API_KEY` and `CORS_ORIGINS` (include the Vercel origin).
+Set `INTRON_API_KEY` and `CORS_ORIGINS` to include `https://legal-ai-web-five.vercel.app`.
 
 **Vercel (UI)** — root directory `frontend`:
 

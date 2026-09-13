@@ -17,12 +17,17 @@ STT_URL = os.getenv("SAHARA_STT_URL", "https://infer.voice.intron.io/file/v1/upl
 TTS_URL = os.getenv("SAHARA_TTS_URL", "https://infer.voice.intron.io/tts/v1/generate")
 
 
+DEFAULT_CORS_ORIGINS = (
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+    "https://legal-ai-web-five.vercel.app",
+)
+
+
 def cors_origins() -> list[str]:
-    raw = os.getenv(
-        "CORS_ORIGINS",
-        "http://127.0.0.1:5173,http://localhost:5173",
-    )
-    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+    raw = os.getenv("CORS_ORIGINS", "")
+    extra = [origin.strip() for origin in raw.split(",") if origin.strip()]
+    return list(dict.fromkeys([*DEFAULT_CORS_ORIGINS, *extra]))
 
 
 def intron_api_key() -> str:

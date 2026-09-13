@@ -11,7 +11,8 @@
   "dependencies": {
     "@intron_health/intron_transcriber_streaming": "^1.1.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.2",
