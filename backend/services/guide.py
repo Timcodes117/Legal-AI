@@ -38,6 +38,26 @@ def _pick_rights(bundle: dict, ids: list[str] | None) -> list:
     return [by_id[item_id] for item_id in DEFAULT_RIGHT_IDS if item_id in by_id]
 
 
+def pack_briefing(language: str) -> dict:
+    language = lang_or_en(language)
+    bundle = first_appearance(language)
+    return {
+        "ok": True,
+        "refused": False,
+        "transcript": "",
+        "language": language,
+        "source": "menu",
+        "focus": "both",
+        "grounded": False,
+        "grounded_error": "",
+        "scenario_id": bundle["scenario_id"],
+        "disclaimer": bundle["disclaimer"],
+        "spoken_summary": spoken_summary(language),
+        "workflow": bundle["workflow"],
+        "rights": bundle["rights"],
+    }
+
+
 def pack_answer(language: str, transcript: str, source: str) -> dict:
     language = lang_or_en(language)
     if is_unsafe(transcript):
