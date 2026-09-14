@@ -2,26 +2,14 @@ import json
 import re
 import time
 
-from backend.core.config import ROOT, gemini_api_key, gemini_model
+from backend.core.config import ROOT, gemini_api_key
 
 RULES = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
-RETIRED_MODELS = (
-    "gemini-1.5-flash",
-    "gemini-2.0-flash",
-    "gemini-2.5-flash",
-)
-CURRENT_MODELS = (
-    "gemini-3.6-flash",
-)
+CURRENT_MODELS = ("gemini-3.6-flash",)
 
 
 def _models() -> tuple[str, ...]:
-    chosen = gemini_model()
-    names = [CURRENT_MODELS[0]]
-    if chosen and chosen not in RETIRED_MODELS:
-        names.append(chosen)
-    names.extend(CURRENT_MODELS)
-    return tuple(dict.fromkeys(names))
+    return CURRENT_MODELS
 
 
 def _compact(bundle: dict) -> dict:
