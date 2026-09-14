@@ -24,6 +24,9 @@ export default function Home() {
     busy,
     showTranscript,
     audioUrl,
+    audioRef,
+    playing,
+    needTapPlay,
     handleTyped,
     startRecording,
     stopRecording,
@@ -102,10 +105,13 @@ export default function Home() {
           {answer.spoken_summary ? (
             <button className="ghost-btn" type="button" onClick={hearAnswer} disabled={busy}>
               {busy ? <ButtonSpinner size={16} /> : null}
-              {copy.hear}
+              {busy ? copy.hearBusy : playing ? copy.playing : copy.hear}
             </button>
           ) : null}
-          {audioUrl ? <audio src={audioUrl} controls autoPlay /> : null}
+          <div className="audio-well">
+            <audio ref={audioRef} controls preload="none" />
+            <small>{needTapPlay ? copy.tapPlay : busy ? copy.hearBusy : playing ? copy.playing : ""}</small>
+          </div>
           {(answer.rights || []).some((right) => (right.say || []).length) ? (
             <div className="answer-next">
               <h3>{copy.sayThis}</h3>

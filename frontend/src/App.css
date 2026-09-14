@@ -220,11 +220,12 @@ h1 {
   gap: 16px;
   align-items: center;
   margin-bottom: 16px;
+  overflow: hidden;
 }
 
 .hero-art {
   height: 280px;
-  overflow: visible;
+  overflow: hidden;
   background: transparent;
 }
 
@@ -236,7 +237,7 @@ h1 {
   width: 100%;
   height: 100%;
   display: block;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .hero-art .court-blob {
@@ -802,9 +803,32 @@ h1 {
   margin-bottom: 16px;
 }
 
-audio {
+.audio-well {
+  margin-top: 14px;
+  padding: 12px;
+  background: var(--mint);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.audio-well audio {
   width: 100%;
-  margin-top: 10px;
+  height: 40px;
+  margin: 0;
+  display: block;
+}
+
+.audio-well small {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.audio-well small:empty {
+  display: none;
 }
 
 .sidebar-backdrop {

@@ -41,11 +41,14 @@ export function GuideProvider({ children }) {
   const [answer, setAnswer] = useState(null);
   const [showTranscript, setShowTranscript] = useState(false);
   const [audioUrl, setAudioUrl] = useState("");
+  const [playing, setPlaying] = useState(false);
+  const [needTapPlay, setNeedTapPlay] = useState(false);
   const [recording, setRecording] = useState(false);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const recorderRef = useRef(null);
   const chunksRef = useRef([]);
+  const audioRef = useRef(null);
   const copy = ui[language];
 
   useEffect(() => {
@@ -60,6 +63,8 @@ export function GuideProvider({ children }) {
         setShowTranscript(false);
         setError("");
         setAudioUrl("");
+        setPlaying(false);
+        setNeedTapPlay(false);
       })
       .catch((err) => {
         if (!cancelled) setError(err.message);
@@ -75,7 +80,19 @@ export function GuideProvider({ children }) {
     };
   }, [language]);
 
+  function clearAudio() {
+    setAudioUrl("");
+    setPlaying(false);
+    setNeedTapPlay(false);
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
+  }
+
   function applyAnswer(data, withTranscript) {
+    clearAudio();
     setAnswer(data);
     setShowTranscript(Boolean(withTranscript && data.transcript));
     setError(data.refused ? data.message || "This request cannot be answered." : "");
@@ -157,13 +174,43 @@ export function GuideProvider({ children }) {
 
   async function hearAnswer() {
     const text = answer?.spoken_summary;
-    if (!text || busy) return;
-    setStatus("Generating speech…");
+    const audio = audioRef.current;
+    if (!text || busy || !audio) return;
+    setError("");
+    setNeedTapPlay(false);
+    setPlaying(false);
+    setStatus(copy.hearBusy);
     setBusy(true);
     try {
+      audio.muted = true;
+      try {
+        await audio.play();
+      } catch {
+        /* keep the tap as a playback gesture before Sahara returns */
+      }
+      audio.pause();
+      audio.currentTime = 0;
+      audio.muted = false;
+
       const data = await speak(text, language);
       if (!data.audio_url) throw new Error("Could not generate speech.");
+      audio.src = data.audio_url;
       setAudioUrl(data.audio_url);
+      audio.load();
+      await new Promise((resolve) => {
+        const done = () => {
+          audio.removeEventListener("canplay", done);
+          resolve();
+        };
+        audio.addEventListener("canplay", done);
+        window.setTimeout(done, 2000);
+      });
+      try {
+        await audio.play();
+        setPlaying(true);
+      } catch {
+        setNeedTapPlay(true);
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -171,6 +218,24 @@ export function GuideProvider({ children }) {
       setBusy(false);
     }
   }
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return undefined;
+    const onPlay = () => setPlaying(true);
+    const onEnded = () => setPlaying(false);
+    const onPause = () => {
+      if (audio.paused) setPlaying(false);
+    };
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("ended", onEnded);
+    audio.addEventListener("pause", onPause);
+    return () => {
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener("pause", onPause);
+    };
+  }, [showTranscript]);
 
   const value = useMemo(
     () => ({
@@ -187,6 +252,9 @@ export function GuideProvider({ children }) {
       answer,
       showTranscript,
       audioUrl,
+      audioRef,
+      playing,
+      needTapPlay,
       recording,
       loading,
       busy,
@@ -206,6 +274,8 @@ export function GuideProvider({ children }) {
       answer,
       showTranscript,
       audioUrl,
+      playing,
+      needTapPlay,
       recording,
       loading,
       busy,
