@@ -160,6 +160,7 @@ Tell Timothy: smoke passed / full finished / Gemini quota stopped us at `--limit
 | Set GEMINI_API_KEY | Ask Timothy to put the key in `backend/.env` |
 | Set INTRON_API_KEY | Same — Sahara cannot score without it |
 | PC freezes on Whisper | Close browsers, keep `tiny`, retry smoke `--limit 2` |
+| Crash while “Loading AfriSwitch clips” / `format_batch` | Yellow symlink text is a warning, not the bug. Pull latest `main`, then run `--limit 2` again. The script now reads audio without Windows FFmpeg/TorchCodec. |
 | `google-genai` / `faster-whisper` missing | `pip install -r requirements-benchmark.txt` inside the venv |
 
 You are done when `benchmark/results/wer.md` exists and has Sahara, gemini, and whisper rows. Send that file to Timothy for the submit pack.

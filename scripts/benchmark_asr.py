@@ -19,6 +19,7 @@ from jiwer import wer
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 load_dotenv(ROOT / "backend" / ".env")
 load_dotenv(ROOT / ".env")
 
@@ -63,22 +64,54 @@ def login_hf() -> None:
     login(token=token, add_to_git_credential=False)
 
 
-def load_clips(config: str, limit: int, max_seconds: float):
-    from datasets import load_dataset
+def decode_clip_wav(audio) -> bytes | None:
+    import io
 
-    stream = load_dataset("intronhealth/AfriSwitch", config, split="test", streaming=True)
-    clips = []
-    for row in stream:
-        if len(clips) >= limit:
-            break
-        ref = (row.get("transcription") or "").strip()
-        audio = row.get("audio") or {}
+    if audio is None:
+        return None
+    if isinstance(audio, dict):
         array = audio.get("array")
         rate = audio.get("sampling_rate")
+        if array is not None and rate:
+            return to_wav_bytes(array, rate)
+        raw = audio.get("bytes")
+        path = audio.get("path")
+        try:
+            if raw:
+                array, rate = sf.read(io.BytesIO(raw))
+                return to_wav_bytes(array, rate)
+            if path:
+                array, rate = sf.read(path)
+                return to_wav_bytes(array, rate)
+        except Exception:
+            return None
+    return None
+
+
+def load_clips(config: str, limit: int, max_seconds: float):
+    from datasets import Audio, load_dataset
+
+    stream = load_dataset("intronhealth/AfriSwitch", config, split="test", streaming=True)
+    # Windows + datasets 4.x tries TorchCodec/FFmpeg on decode and crashes.
+    if hasattr(stream, "decode"):
+        stream = stream.decode(False)
+    else:
+        stream = stream.cast_column("audio", Audio(decode=False))
+
+    clips = []
+    scanned = 0
+    for row in stream:
+        scanned += 1
+        if len(clips) >= limit:
+            break
+        if scanned > limit * 40:
+            break
+        ref = (row.get("transcription") or "").strip()
         duration = float(row.get("duration") or 0)
-        if not ref or array is None or not rate:
+        if not ref or duration > max_seconds:
             continue
-        if duration > max_seconds:
+        wav = decode_clip_wav(row.get("audio"))
+        if not wav:
             continue
         clips.append(
             {
@@ -86,7 +119,7 @@ def load_clips(config: str, limit: int, max_seconds: float):
                 "language": config,
                 "duration": duration,
                 "reference": ref,
-                "wav": to_wav_bytes(array, rate),
+                "wav": wav,
             }
         )
     if len(clips) < limit:
