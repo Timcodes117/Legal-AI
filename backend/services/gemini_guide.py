@@ -63,18 +63,21 @@ def refine_answer(language: str, transcript: str, bundle: dict) -> tuple[dict | 
     prompt = f"""{RULES}
 
 Answer ONLY from the JSON content. Do not invent law.
-The user asked about first appearance in a Nigerian court.
-Reply in language code "{language}" (en, yo, or ha).
+Reply in language code "{language}" (en, yo, or ha). Match the user's mix if they mixed languages.
+The user_said field is what they actually asked. Answer THAT situation. Do not recite a generic first-appearance brochure.
+If they do not understand the judge or English: lead with the interpreter right.
+If they have no lawyer or no money: lead with Legal Aid / counsel.
+If they were told to pay for bail: say bail itself is free and paying an officer for bail is illegal.
+If they were not told the charge: lead with the right to be informed.
+If they asked what happens today / who will be there / how to plead: set include_workflow true and explain those three steps. Otherwise include_workflow is false.
+3 to 5 short sentences. Last sentence: this is information, not legal advice.
 Return JSON only, no markdown:
 {{
-  "spoken_summary": "2 to 4 short sentences that actually answer the user",
+  "spoken_summary": "specific answer to user_said",
   "right_ids": ["id", "..."],
   "include_workflow": false
 }}
-right_ids must be a subset of the ids in the JSON. Pick at most 3.
-If they ask what they can do about their case, prefer counsel, bail, and informed_of_charges.
-Do not return every right.
-include_workflow is true only if they asked what happens in court, who will be there, or what they will be asked.
+right_ids must be a subset of the ids in the JSON. Pick at most 3, only what they raised.
 
 JSON:
 {json.dumps(payload, ensure_ascii=False)}

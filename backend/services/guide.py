@@ -6,7 +6,22 @@ MAX_RIGHTS = 3
 DEFAULT_RIGHT_IDS = ("counsel", "bail", "informed_of_charges")
 
 
-def _slim_rights(items: list | None) -> list | None:
+def _best_say(item: dict, transcript: str) -> list[str]:
+    lines = [line for line in (item.get("say") or []) if line]
+    if not lines:
+        return []
+    words = [word for word in (transcript or "").lower().split() if len(word) > 3]
+    if not words:
+        return lines[:1]
+    ranked = sorted(
+        lines,
+        key=lambda line: sum(1 for word in words if word in line.lower()),
+        reverse=True,
+    )
+    return ranked[:1]
+
+
+def _slim_rights(items: list | None, transcript: str = "") -> list | None:
     if not items:
         return None
     slim = []
@@ -15,7 +30,7 @@ def _slim_rights(items: list | None) -> list | None:
             {
                 "id": item["id"],
                 "title": item["title"],
-                "say": (item.get("say") or [])[:2],
+                "say": _best_say(item, transcript),
             }
         )
     return slim
@@ -113,5 +128,5 @@ def pack_answer(language: str, transcript: str, source: str) -> dict:
         "disclaimer": bundle["disclaimer"],
         "spoken_summary": summary,
         "workflow": _slim_workflow(workflow),
-        "rights": _slim_rights(rights),
+        "rights": _slim_rights(rights, transcript),
     }

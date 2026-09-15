@@ -130,8 +130,17 @@ export default function Home() {
               <h3>{copy.expectToday}</h3>
               <ol className="expect-list tight">
                 {answer.workflow.steps.slice(0, 3).map((step) => {
-                  const title = step.includes(":") ? step.slice(0, step.indexOf(":")) : step;
-                  return <li key={step}>{title}</li>;
+                  const split = step.indexOf(":");
+                  const title = split === -1 ? step : step.slice(0, split);
+                  const body = split === -1 ? "" : step.slice(split + 1).trim();
+                  return (
+                    <li key={step}>
+                      <p>
+                        <strong>{title}</strong>
+                        {body ? ` ${body}` : null}
+                      </p>
+                    </li>
+                  );
                 })}
               </ol>
               <Link className="see-more inline" to="/about#expect">

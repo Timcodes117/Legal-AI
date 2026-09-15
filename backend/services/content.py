@@ -71,10 +71,24 @@ FALLBACK_SUMMARIES = {
 
 def spoken_summary(language: str, right_ids: list[str] | None = None) -> str:
     language = lang_or_en(language)
+    parts = []
     for right_id in right_ids or []:
         block = FALLBACK_SUMMARIES.get(right_id)
-        if block:
-            return block.get(language) or block["en"]
+        if not block:
+            continue
+        text = block.get(language) or block["en"]
+        first = text.split(" This is not")[0].split(" Èyí kì")[0].split(" Wannan ba")[0].strip()
+        if first and first not in parts:
+            parts.append(first)
+        if len(parts) >= 3:
+            break
+    if parts:
+        closer = {
+            "en": "This is information, not legal advice.",
+            "yo": "Èyí kì í ṣe agbẹjọ́rò.",
+            "ha": "Wannan ba lauya ba ne.",
+        }
+        return " ".join(parts) + " " + closer.get(language, closer["en"])
     summaries = {
         "en": "At first appearance, ask for a lawyer, an interpreter, and bail. This is not legal advice.",
         "yo": "Ní ìfarahàn àkọ́kọ́, béèrè agbẹjọ́rò, interpreter, àti bail. Èyí kì í ṣe agbẹjọ́rò.",
